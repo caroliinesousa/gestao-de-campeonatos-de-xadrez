@@ -82,7 +82,8 @@ Este projeto está licenciado sob a [MIT License](LICENSE). Você pode usá-lo e
 
 ---
 
-## 💡 Autor
+## 💡 Autores
 
-- **Caroline Sousa**  
-- [GitHub](https://github.com/caroliinesousa)
+<a href="https://github.com/Caroliinesousa/gestao-de-campeonatos-de-xadrez/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Caroliinesousa/gestao-de-campeonatos-de-xadrez" />
+</a>
