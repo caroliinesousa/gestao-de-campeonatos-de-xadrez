@@ -87,11 +87,77 @@ public class ControllerJogador {
 
 
     public void consultarJogador(String nome){
+    try {
+        File arquivo = new File("informacoesCampeonato.txt");
+        if (!arquivo.exists()) {
+            System.out.println("Arquivo de informações não encontrado!");
+            return;
+        }
+
+        boolean encontrado = false;
+
+        // Leitura do arquivo
+        Scanner scanner = new Scanner(arquivo);
+        while (scanner.hasNextLine()) {
+            String linha = scanner.nextLine();
+            if (linha.contains("Nome: " + nome)) {
+                System.out.println("Jogador encontrado: " + linha);
+                encontrado = true;
+                break;
+            }
+        }
+        scanner.close();
+
+        if (!encontrado) {
+            System.out.println("Jogador não encontrado!");
+        }
+    } catch (IOException ex) {
+        System.out.println("Erro ao consultar jogador: " + ex.getMessage());
+    }
+
 
 
     }
 
     public void excluirJogador(String nome){
-        
+    try {
+        File arquivo = new File("informacoesCampeonato.txt");
+        if (!arquivo.exists()) {
+            System.out.println("Arquivo de informações não encontrado!");
+            return;
+        }
+
+        List<String> registros = new ArrayList<>();
+        boolean encontrado = false;
+
+        // Lê o arquivo e filtra os registros
+        Scanner scanner = new Scanner(arquivo);
+        while (scanner.hasNextLine()) {
+            String linha = scanner.nextLine();
+            if (linha.contains("Nome: " + nome)) {
+                encontrado = true;
+            } else {
+                registros.add(linha);
+            }
+        }
+        scanner.close();
+
+        if (!encontrado) {
+            System.out.println("Jogador não encontrado!");
+            return;
+        }
+
+        // Reescreve o arquivo com os registros restantes
+        PrintWriter writer = new PrintWriter(new FileWriter("informacoesCampeonato.txt"));
+        for (String registro : registros) {
+            writer.println(registro);
+        }
+        writer.close();
+
+        System.out.println("Jogador excluído com sucesso!");
+
+    } catch (IOException ex) {
+        System.out.println("Erro ao excluir jogador: " + ex.getMessage());
     }
+}
 }
