@@ -82,7 +82,10 @@ Este projeto está licenciado sob a [MIT License](LICENSE). Você pode usá-lo e
 
 ---
 
-## 💡 Autor
+## 💡 Autores
 
 - **Caroline Sousa**  
 - [GitHub](https://github.com/caroliinesousa)
+
+- **Vitor Fontenele**  
+- [GitHub](https://github.com/ffvitor)
