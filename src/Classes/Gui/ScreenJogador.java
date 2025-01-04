@@ -1,33 +1,31 @@
 package Classes.Gui;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-
 import Classes.Controller.ControllerJogador;
 
 public class ScreenJogador extends JFrame {
-    
 
     public ScreenJogador() {
-}
-    public void telaMenuJogador(){
-        setTitle("Gerir Jogadores");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void telaMenuJogador() {
+        setTitle("Gestao de Jogadores");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(6, 1));
 
         JPanel panel = new JPanel(new GridLayout(6, 1));
-        JLabel fraseLabel = new JLabel("Bem Vindo ao Campeonato X");
+        panel.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));
+        JLabel fraseLabel = new JLabel("Gestao de Jogadores", SwingConstants.CENTER);
+        fraseLabel.setFont(new Font("Arial", Font.BOLD, 24));
         JButton cadastrarJogadorButton = new JButton("Cadastrar Jogador");
         JButton consultarJogadorButton = new JButton("Consultar Jogador");
         JButton atualizarJogadorButton = new JButton("Atualizar Jogador");
         JButton excluirJogadorButton = new JButton("Excluir Jogador");
         JButton voltarApaginaInicialButton = new JButton("Voltar a Página Inicial");
-
 
         panel.add(fraseLabel);
         panel.add(cadastrarJogadorButton);
@@ -53,26 +51,51 @@ public class ScreenJogador extends JFrame {
                 screenJogador.telaAtualizarJogador();
             }
         });
+
+        consultarJogadorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ScreenJogador screenJogador = new ScreenJogador();
+                screenJogador.telaConsultarJogador();
+            }
+        });
+
+        excluirJogadorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ScreenJogador screenJogador = new ScreenJogador();
+                screenJogador.telaExcluirJogador();
+            }
+        });
+
+        voltarApaginaInicialButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+            
+        });
     }
 
-    public void telaCadastrarJogador(){
-        JFrame frame = new JFrame("Cadastro de Jogador");
+    public void telaCadastrarJogador() {
+        JFrame frame = new JFrame("Cadastrar Jogador");
         JTextField nomeField;
         JTextField idadeField;
         JTextField sexoField;
         JTextField rankingField;
         JTextField partidasField;
         JButton salvarButton;
-
         ControllerJogador controller = new ControllerJogador();
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setBounds(30, 200, 0, 0);
         frame.setSize(800, 400);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setLayout(new GridLayout(5, 1));
 
-        JPanel inputs =   new JPanel(new GridLayout(3, 3));
+        JPanel inputs = new JPanel(new GridLayout(3, 3));
         inputs.add(new JLabel("Nome Jogador:"));
         nomeField = new JTextField();
         inputs.add(nomeField);
@@ -94,32 +117,27 @@ public class ScreenJogador extends JFrame {
         inputs.add(partidasField);
 
         frame.add(inputs);
-    
 
         salvarButton = new JButton("Salvar");
         salvarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int rankingInt = Integer.parseInt(rankingField.getText());
                 int partidasInt = Integer.parseInt(partidasField.getText());
-                controller.cadastrarJogador( nomeField.getText(), idadeField.getText(), sexoField.getText(),rankingInt, partidasInt );
+                controller.cadastrarJogador(nomeField.getText(), idadeField.getText(), sexoField.getText(), rankingInt, partidasInt);
                 nomeField.setText("");
                 idadeField.setText("");
-                sexoField.setText("");  
+                sexoField.setText("");
                 rankingField.setText("");
-                partidasField.setText(""); 
-            
+                partidasField.setText("");
+
             }
         });
         frame.add(salvarButton);
         frame.setVisible(true);
-        
-        
-        
+
     }
-   
 
-    public void telaAtualizarJogador(){
-
+    public void telaAtualizarJogador() {
         JTextField nomeField;
         JTextField idadeField;
         JTextField sexoField;
@@ -127,17 +145,16 @@ public class ScreenJogador extends JFrame {
         JTextField partidasField;
         JButton atualizarButton;
         ControllerJogador atualizarJogador;
-
         atualizarJogador = new ControllerJogador();
 
         setTitle("Atualizar Jogador");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);
         setLayout(new GridLayout(5, 1));
 
-        JPanel inputs =   new JPanel(new GridLayout(3, 3));
+        JPanel inputs = new JPanel(new GridLayout(3, 3));
         inputs.add(new JLabel("Nome Jogador:"));
         nomeField = new JTextField();
         inputs.add(nomeField);
@@ -160,32 +177,111 @@ public class ScreenJogador extends JFrame {
 
         add(inputs);
 
-        atualizarButton = new JButton("");
+        atualizarButton = new JButton("Atualizar");
         atualizarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int rankingInt = Integer.parseInt(rankingField.getText());
                 int partidasInt = Integer.parseInt(partidasField.getText());
-                atualizarJogador.atualizarJogador( nomeField.getText(), idadeField.getText(),  sexoField.getText(), rankingInt, partidasInt);
+                atualizarJogador.atualizarJogador(nomeField.getText(), idadeField.getText(), sexoField.getText(), rankingInt, partidasInt);
                 nomeField.setText("");
                 idadeField.setText("");
-                sexoField.setText("");  
+                sexoField.setText("");
                 rankingField.setText("");
-                partidasField.setText(""); 
-            
+                partidasField.setText("");
+
             }
         });
         add(atualizarButton);
         setVisible(true);
-        
-        
-        
     }
 
-    public void telaConsultarJogador(){
+    public void telaConsultarJogador() {
+        JTextField nomeField;
+        JButton salvarButton;
+        ControllerJogador consultarJogador;
+        consultarJogador = new ControllerJogador();
 
+        setTitle("Consulta de Jogador");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(800, 400);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setLayout(new GridLayout(3, 1));
+
+        JPanel inputs = new JPanel(new GridLayout(3, 3));
+        inputs.add(new JLabel("Nome Jogador:", SwingConstants.CENTER));
+        nomeField = new JTextField();
+        inputs.add(nomeField);
+
+        add(inputs);
+
+        salvarButton = new JButton("Consultar");
+        salvarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                consultarJogador.consultarJogador(nomeField.getText());
+                nomeField.setText("");
+
+            }
+        });
+        add(salvarButton);
+        setVisible(true);
     }
 
-    public void telaExcluirJogador(){
+    public void telaExcluirJogador() {
+        JFrame frame = new JFrame("Excluir Jogador");
+        JTextField nomeField;
+        JButton excluirButton;
+        ControllerJogador excluirJogador;
+        excluirJogador = new ControllerJogador();
 
+        frame.setTitle("Excluir Jogador");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(800, 400);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        frame.setLayout(new GridLayout(3, 1));
+
+        JPanel inputs = new JPanel(new GridLayout(3, 3));
+        inputs.add(new JLabel("Nome Jogador:", SwingConstants.CENTER));
+        nomeField = new JTextField();
+        inputs.add(nomeField);
+
+        frame.add(inputs);
+
+        excluirButton = new JButton("Excluir");
+        excluirButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                excluirJogador.excluirJogador(nomeField.getText());
+                nomeField.setText("");
+
+            }
+        });
+        frame.add(excluirButton);
+        frame.setVisible(true);
+    }
+
+    public void telaVoltarAoMenu() {
+        JButton voltarApaginaInicialButton;
+        
+        setTitle("Menu Principal");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(800, 400);
+        setResizable(false);
+        setLocationRelativeTo(null);
+    
+        voltarApaginaInicialButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Fecha a tela atual
+                dispose(); // Use dispose() para fechar a janela atual corretamente
+        
+                // Torna a tela principal visível novamente
+                screenJogador.setVisible(true); 
+                // Se necessário, traga a tela principal para frente:
+                screenJogador.toFront();
+            }
+        });
     }
 }

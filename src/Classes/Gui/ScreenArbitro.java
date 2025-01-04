@@ -7,12 +7,6 @@ import java.lang.ModuleLayer.Controller;
 
 import javax.swing.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import Classes.Controller.ControllerArbitro;
 
 public class ScreenArbitro extends JFrame {
@@ -28,9 +22,12 @@ public class ScreenArbitro extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setLayout(new GridLayout(6, 1));
+        setLayout(new BorderLayout(75,75));
 
         JPanel panel = new JPanel(new GridLayout(6, 1));
-        JLabel fraseLabel = new JLabel("Bem Vindo ao Campeonato X");
+        panel.setBorder(BorderFactory.createEmptyBorder(40,100,40,100));
+        JLabel fraseLabel = new JLabel("Bem Vindo ao Campeonato X", SwingConstants.CENTER);
+        fraseLabel.setFont(new Font("Arial", Font.BOLD, 24));
         JButton cadastrarArbitroButton = new JButton("Cadastrar Arbitro");
         JButton consultarArbitroButton = new JButton("Consultar Arbitro");
         JButton atualizarArbitroButton = new JButton("Atualizar Arbitro");
@@ -47,26 +44,59 @@ public class ScreenArbitro extends JFrame {
 
         add(panel);
         setVisible(true);
+
+        cadastrarArbitroButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                telaCadastrarArbitro();
+            }
+        });
+
+        atualizarArbitroButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ScreenArbitro screenArbitro = new ScreenArbitro();
+                screenArbitro.telaAtualizarArbitro();
+            }
+        });
+
+        consultarArbitroButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ScreenArbitro screenArbitro = new ScreenArbitro();
+                screenArbitro.telaConsultarArbitro();
+            }
+        });
+
+        excluirArbitroButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ScreenArbitro screenArbitro = new ScreenArbitro();
+                screenArbitro.telaExcluirArbitro();
+            }
+        });
     
 
     }
     public void telaCadastrarArbitro() {
+        JFrame frame = new JFrame("Cadastro de Arbitro");
         JTextField nomeField;
         JTextField idadeField;
         JTextField sexoField;
+        JTextField certificacoesField;
         JButton salvarButton;
         ControllerArbitro cadastrarArbitro;
 
         cadastrarArbitro = new ControllerArbitro();
 
-        setTitle("Cadastro de arbitro");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 400);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setLayout(new GridLayout(5, 1));
+        frame.setTitle("Cadastro de arbitro");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(800, 400);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        frame.setLayout(new GridLayout(5, 2));
 
-        JPanel inputs = new JPanel(new GridLayout(3, 3));
+        JPanel inputs = new JPanel(new GridLayout(5, 2));
         inputs.add(new JLabel("Nome arbitro:"));
         nomeField = new JTextField();
         inputs.add(nomeField);
@@ -79,21 +109,25 @@ public class ScreenArbitro extends JFrame {
         sexoField = new JTextField();
         inputs.add(sexoField);
 
-        add(inputs);
+        inputs.add(new JLabel("Certificacoes:"));
+        certificacoesField = new JTextField();
+        inputs.add(certificacoesField);
+
+        frame.add(inputs);
 
         salvarButton = new JButton("Salvar");
         salvarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cadastrarArbitro.cadastrarArbitro(nomeField.getText(), idadeField.getText(), sexoField.getText(),
-                ScreenArbitro.this);
+                cadastrarArbitro.cadastrarArbitro(nomeField.getText(), idadeField.getText(), sexoField.getText(), certificacoesField.getText());
                 nomeField.setText("");
                 idadeField.setText("");
                 sexoField.setText("");
+                certificacoesField.setText("");
             }
         });
-        add(salvarButton);
-    
+        frame.add(salvarButton);
+        frame.setVisible(true);
 
     }
 
@@ -103,18 +137,18 @@ public class ScreenArbitro extends JFrame {
         JTextField sexoField;
         JTextField certificacoesField;
         JButton salvarButton;
-        ControllerArbitro cadastrarArbitro;
+        ControllerArbitro atualizarArbitro;
 
-        ControllerArbitro atualizarArbitro = new ControllerArbitro();
+        atualizarArbitro = new ControllerArbitro();
 
         setTitle("Atualizar arbitro");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(5, 1));
+        setLayout(new GridLayout(5, 2));
 
-        JPanel inputs = new JPanel(new GridLayout(4, 3));
+        JPanel inputs = new JPanel(new GridLayout(5, 3));
         inputs.add(new JLabel("Nome arbitro:"));
         nomeField = new JTextField();
         inputs.add(nomeField);
@@ -133,7 +167,7 @@ public class ScreenArbitro extends JFrame {
 
 
         add(inputs);
-
+        
         salvarButton = new JButton("Atualizar");
         salvarButton.addActionListener(new ActionListener() {
             @Override
@@ -145,6 +179,7 @@ public class ScreenArbitro extends JFrame {
             }
         });
         add(salvarButton);
+        setVisible(true);
 
     }
 
@@ -170,7 +205,7 @@ public class ScreenArbitro extends JFrame {
 
         add(inputs);
 
-        salvarButton = new JButton("Salvar");
+        salvarButton = new JButton("Consultar");
         salvarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -180,6 +215,7 @@ public class ScreenArbitro extends JFrame {
             }
         });
         add(salvarButton);
+        setVisible(true);
 
     }
 
@@ -187,8 +223,8 @@ public class ScreenArbitro extends JFrame {
 
         JTextField nomeField;
         JButton salvarButton;
-        ControllerArbitro consultarArbitro;
-        ControllerArbitro excluirArbitro = new ControllerArbitro();
+        ControllerArbitro excluirArbitro;
+        excluirArbitro = new ControllerArbitro();
 
         setTitle("Excluir arbitro");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -214,7 +250,7 @@ public class ScreenArbitro extends JFrame {
             }
         });
         add(salvarButton);
-
+        setVisible(true);
     }
 
     }

@@ -1,11 +1,9 @@
 package Classes.Gui;
-
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,14 +11,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
 import Classes.Controller.ControllerArbitro;
 
 public class ScreenMenu extends JFrame {
 
     public void telaPrincipal(){
         setTitle("Página Inicial");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -61,6 +58,16 @@ public class ScreenMenu extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 ScreenArbitro screenArbitro = new ScreenArbitro();
                 screenArbitro.telaMenuArbitro();
+            }
+            
+        });
+
+        gerirCampeonatoButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ScreenCampeonato screenCampeonato = new ScreenCampeonato();
+                screenCampeonato.telaMenuCampeonato();
             }
             
         });
