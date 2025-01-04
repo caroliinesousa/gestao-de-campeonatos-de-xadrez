@@ -72,17 +72,13 @@ Certifique-se de ter as seguintes ferramentas instaladas no seu ambiente:
    ```bash
    git push origin minha-nova-funcionalidade
    ```  
-5. Abra um Pull Request explicando suas alterações.  
+5. Abra um Pull Request explicando suas alterações.   
 
 ---
 
-## 📄 Licença
+## 💡 Autores
 
-Este projeto está licenciado sob a [MIT License](LICENSE). Você pode usá-lo e adaptá-lo livremente.  
+<a href="https://github.com/Caroliinesousa/gestao-de-campeonatos-de-xadrez/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Caroliinesousa/gestao-de-campeonatos-de-xadrez" />
+</a>
 
----
-
-## 💡 Autor
-
-- **Caroline Sousa**  
-- [GitHub](https://github.com/caroliinesousa)
