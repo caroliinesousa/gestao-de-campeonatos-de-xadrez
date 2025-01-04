@@ -17,7 +17,7 @@ public class ScreenArbitro extends JFrame {
     public void telaMenuArbitro(){
 
         setTitle("Gerir Arbitros");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -90,7 +90,7 @@ public class ScreenArbitro extends JFrame {
         cadastrarArbitro = new ControllerArbitro();
 
         frame.setTitle("Cadastro de arbitro");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(800, 400);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
@@ -142,7 +142,7 @@ public class ScreenArbitro extends JFrame {
         atualizarArbitro = new ControllerArbitro();
 
         setTitle("Atualizar arbitro");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -192,11 +192,11 @@ public class ScreenArbitro extends JFrame {
         consultarArbitro = new ControllerArbitro();
 
         setTitle("Consulta de arbitro");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(3, 1));
+        setLayout(new GridLayout(5, 2));
 
         JPanel inputs = new JPanel(new GridLayout(3, 3));
         inputs.add(new JLabel("Nome arbitro:"));
@@ -227,7 +227,7 @@ public class ScreenArbitro extends JFrame {
         excluirArbitro = new ControllerArbitro();
 
         setTitle("Excluir arbitro");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);
