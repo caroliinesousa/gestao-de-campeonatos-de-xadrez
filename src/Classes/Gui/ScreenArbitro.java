@@ -16,7 +16,7 @@ public class ScreenArbitro extends JFrame {
     }
     public void telaMenuArbitro(){
 
-        setTitle("Gerir Arbitros");
+        setTitle("Gestao de Arbitros");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
@@ -74,6 +74,15 @@ public class ScreenArbitro extends JFrame {
                 ScreenArbitro screenArbitro = new ScreenArbitro();
                 screenArbitro.telaExcluirArbitro();
             }
+        });
+
+        voltarApaginaInicialButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+            
         });
     
 
@@ -254,5 +263,25 @@ public class ScreenArbitro extends JFrame {
         setVisible(true);
     }
 
+    public void telaVoltarAoMenu() {
+        JButton voltarApaginaInicialButton;
+        
+        setTitle("Menu Principal");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(800, 400);
+        setResizable(false);
+        setLocationRelativeTo(null);
+    
+        voltarApaginaInicialButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                dispose(); 
+                screenArbitro.setVisible(true);
+                screenArbitro.toFront();
+            }
+        });
     }
+
+}
 

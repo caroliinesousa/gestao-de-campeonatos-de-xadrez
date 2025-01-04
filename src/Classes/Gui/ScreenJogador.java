@@ -274,12 +274,9 @@ public class ScreenJogador extends JFrame {
         voltarApaginaInicialButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Fecha a tela atual
-                dispose(); // Use dispose() para fechar a janela atual corretamente
-        
-                // Torna a tela principal visível novamente
-                screenJogador.setVisible(true); 
-                // Se necessário, traga a tela principal para frente:
+                
+                dispose(); 
+                screenJogador.setVisible(true);
                 screenJogador.toFront();
             }
         });
