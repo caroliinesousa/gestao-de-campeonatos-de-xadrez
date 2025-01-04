@@ -1,3 +1,2 @@
 Nome: Joao, Idade: 29, Gênero: M, certificacoes: FIFA
-Nome: Vitor, Idade: 19, Gênero: M, certificacoes: FIFA
-Nome: Amanda, Idade: 25, Gênero: F, certificacoes: FIFA
+Nome: Amanda, Idade: 25, Gênero: F, Certificações: IELTS

@@ -93,9 +93,9 @@ public class ScreenJogador extends JFrame {
         frame.setSize(800, 400);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
-        frame.setLayout(new GridLayout(5, 1));
+        frame.setLayout(new GridLayout(5, 2));
 
-        JPanel inputs = new JPanel(new GridLayout(3, 3));
+        JPanel inputs = new JPanel(new GridLayout(5, 2));
         inputs.add(new JLabel("Nome Jogador:"));
         nomeField = new JTextField();
         inputs.add(nomeField);
@@ -152,9 +152,9 @@ public class ScreenJogador extends JFrame {
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(5, 1));
+        setLayout(new GridLayout(5, 2));
 
-        JPanel inputs = new JPanel(new GridLayout(3, 3));
+        JPanel inputs = new JPanel(new GridLayout(5, 2));
         inputs.add(new JLabel("Nome Jogador:"));
         nomeField = new JTextField();
         inputs.add(nomeField);

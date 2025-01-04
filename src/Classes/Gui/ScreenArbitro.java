@@ -146,9 +146,9 @@ public class ScreenArbitro extends JFrame {
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(5, 2));
+        setLayout(new GridLayout(5, 1));
 
-        JPanel inputs = new JPanel(new GridLayout(5, 3));
+        JPanel inputs = new JPanel(new GridLayout(5, 2));
         inputs.add(new JLabel("Nome arbitro:"));
         nomeField = new JTextField();
         inputs.add(nomeField);
@@ -163,7 +163,7 @@ public class ScreenArbitro extends JFrame {
 
         inputs.add(new JLabel("Certificacoes:"));
         certificacoesField = new JTextField();
-        inputs.add(sexoField);
+        inputs.add(certificacoesField);
 
 
         add(inputs);
@@ -176,6 +176,7 @@ public class ScreenArbitro extends JFrame {
                 nomeField.setText("");
                 idadeField.setText("");
                 sexoField.setText("");
+                certificacoesField.setText("");
             }
         });
         add(salvarButton);
@@ -198,8 +199,8 @@ public class ScreenArbitro extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new GridLayout(5, 2));
 
-        JPanel inputs = new JPanel(new GridLayout(3, 3));
-        inputs.add(new JLabel("Nome arbitro:"));
+        JPanel inputs = new JPanel(new GridLayout(3, 1));
+        inputs.add(new JLabel("Nome arbitro:", SwingConstants.CENTER));
         nomeField = new JTextField();
         inputs.add(nomeField);
 
@@ -234,7 +235,7 @@ public class ScreenArbitro extends JFrame {
         setLayout(new GridLayout(3, 1));
 
         JPanel inputs = new JPanel(new GridLayout(3, 3));
-        inputs.add(new JLabel("Nome arbitro:"));
+        inputs.add(new JLabel("Nome arbitro:" , SwingConstants.CENTER));
         nomeField = new JTextField();
         inputs.add(nomeField);
 
