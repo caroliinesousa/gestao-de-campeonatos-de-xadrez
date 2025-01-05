@@ -17,10 +17,13 @@ public class ScreenJogador extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
 
-        JPanel panel = new JPanel(new GridLayout(6, 1));
+        JPanel panel = new JPanel(new GridLayout(7, 1));
         panel.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));
         JLabel fraseLabel = new JLabel("Gestão de Jogadores", SwingConstants.CENTER);
-        fraseLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        fraseLabel.setFont(new Font("Arial", Font.BOLD, 28));
+        JLabel fraseLabel2 = new JLabel("Gerencie os Jogadores com facilidade. Escolha uma das opções para começar!", SwingConstants.CENTER);
+        fraseLabel2.setFont(new Font("Arial", Font.PLAIN, 13));
+
         JButton cadastrarJogadorButton = new JButton("Cadastrar Jogador");
         JButton consultarJogadorButton = new JButton("Consultar Jogador");
         JButton atualizarJogadorButton = new JButton("Atualizar Jogador");
@@ -28,6 +31,7 @@ public class ScreenJogador extends JFrame {
         JButton voltarApaginaInicialButton = new JButton("Voltar a Página Inicial");
 
         panel.add(fraseLabel);
+        panel.add(fraseLabel2);
         panel.add(cadastrarJogadorButton);
         panel.add(consultarJogadorButton);
         panel.add(atualizarJogadorButton);

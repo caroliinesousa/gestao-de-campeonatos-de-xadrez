@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import Classes.Controller.ControllerArbitro;
 import Classes.Controller.ControllerCampeonato;
-import Classes.Controller.ControllerPartida;
+
 
 
 public class ScreenCampeonato extends JFrame {
@@ -28,10 +28,16 @@ public class ScreenCampeonato extends JFrame {
         setLayout(new GridLayout(5, 1));
         setLayout(new BorderLayout(75,75));
 
-        JPanel panel = new JPanel(new GridLayout(6, 1));
+        JPanel panel = new JPanel(new GridLayout(8, 1));
         panel.setBorder(BorderFactory.createEmptyBorder(40,100,40,100));
         JLabel fraseLabel = new JLabel("Gestão de Campeonatos", SwingConstants.CENTER);
-        fraseLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        fraseLabel.setFont(new Font("Arial", Font.BOLD, 28));
+        JLabel fraseLabel2 = new JLabel("O tabuleiro está pronto, e as peças estão posicionadas. Que comece o Campeonato Xeque&Mate!", SwingConstants.CENTER);
+        fraseLabel2.setFont(new Font("Arial", Font.PLAIN, 12));
+        JLabel fraseLabel3 = new JLabel("Selecione uma opção para começar a gestão!", SwingConstants.CENTER);
+        fraseLabel3.setFont(new Font("Arial", Font.PLAIN, 12));
+
+
         JButton gerirPartidasButton = new JButton("Gerir Partidas");
         JButton gerirTorneiosButton = new JButton("Gerir Campeonato");
         JButton visualizarRankingButton = new JButton("Visualizar Ranking");
@@ -39,6 +45,8 @@ public class ScreenCampeonato extends JFrame {
         JButton voltarApaginaInicialButton = new JButton("Voltar a Página Inicial");
 
         panel.add(fraseLabel);
+        panel.add(fraseLabel2);
+        panel.add(fraseLabel3);
         panel.add(gerirPartidasButton);
         panel.add(gerirTorneiosButton);
         panel.add(visualizarRankingButton);
@@ -107,7 +115,7 @@ public class ScreenCampeonato extends JFrame {
         JButton sairButton;
         ControllerCampeonato gerirPartidas;
 
-        gerirPartidas = new ControllerPartida();
+        gerirPartidas = new ControllerCampeonato();
 
         frame.setTitle("Gerir Partidas");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

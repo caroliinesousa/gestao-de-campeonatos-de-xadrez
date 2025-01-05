@@ -26,9 +26,9 @@ public class ScreenMenu extends JFrame {
         JPanel panel = new JPanel(new GridLayout(6, 1));
         panel.setBorder(BorderFactory.createEmptyBorder(40,100,40,100));
         JLabel fraseLabel = new JLabel("Bem Vindo ao Xeque & Mate!", SwingConstants.CENTER);
-        fraseLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        JLabel fraseLabel2 = new JLabel("Gerencie jogadores, árbitros e campeonatos com facilidade. Selecione uma opção para começar!", SwingConstants.CENTER);
-        fraseLabel2.setFont(new Font("Arial", Font.PLAIN, 14));
+        fraseLabel.setFont(new Font("Arial", Font.BOLD, 28));
+        JLabel fraseLabel2 = new JLabel("Gerencie jogadores, árbitros e campeonatos de forma simples e eficiente. Selecione uma opção para começar:", SwingConstants.CENTER);
+        fraseLabel2.setFont(new Font("Arial", Font.PLAIN, 12));
 
         JButton gerirJogadoresButton = new JButton("Gerir Jogadores");
         JButton gerirArbitrosButton = new JButton("Gerir Árbitros");

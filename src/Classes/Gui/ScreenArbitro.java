@@ -20,10 +20,13 @@ public class ScreenArbitro extends JFrame {
         setLayout(new GridLayout(6, 1));
         setLayout(new BorderLayout(75,75));
 
-        JPanel panel = new JPanel(new GridLayout(6, 1));
+        JPanel panel = new JPanel(new GridLayout(7, 1));
         panel.setBorder(BorderFactory.createEmptyBorder(40,100,40,100));
         JLabel fraseLabel = new JLabel("Gestão de Árbitros", SwingConstants.CENTER);
-        fraseLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        fraseLabel.setFont(new Font("Arial", Font.BOLD, 28));
+        JLabel fraseLabel2 = new JLabel("Gerencie os Árbitros com facilidade. Escolha uma das opções para começar!", SwingConstants.CENTER);
+        fraseLabel2.setFont(new Font("Arial", Font.PLAIN, 12));
+
         JButton cadastrarArbitroButton = new JButton("Cadastrar Árbitro");
         JButton consultarArbitroButton = new JButton("Consultar Árbitro");
         JButton atualizarArbitroButton = new JButton("Atualizar Árbitro");
@@ -32,6 +35,7 @@ public class ScreenArbitro extends JFrame {
 
 
         panel.add(fraseLabel);
+        panel.add(fraseLabel2);
         panel.add(cadastrarArbitroButton);
         panel.add(consultarArbitroButton);
         panel.add(atualizarArbitroButton);
