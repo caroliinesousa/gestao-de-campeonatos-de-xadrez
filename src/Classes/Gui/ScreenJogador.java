@@ -17,16 +17,21 @@ public class ScreenJogador extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
 
-        JPanel panel = new JPanel(new GridLayout(6, 1));
+        JPanel panel = new JPanel(new GridLayout(7, 1));
         panel.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));
         JLabel fraseLabel = new JLabel("Gestão de Jogadores", SwingConstants.CENTER);
-        fraseLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        fraseLabel.setFont(new Font("Arial", Font.BOLD, 28));
+        JLabel fraseLabel2 = new JLabel("Gerencie os Jogadores com facilidade. Escolha uma das opções para começar!", SwingConstants.CENTER);
+        fraseLabel2.setFont(new Font("Arial", Font.PLAIN, 12));
+
         JButton cadastrarJogadorButton = new JButton("Cadastrar Jogador");
         JButton consultarJogadorButton = new JButton("Consultar Jogador");
         JButton atualizarJogadorButton = new JButton("Atualizar Jogador");
         JButton excluirJogadorButton = new JButton("Excluir Jogador");
         JButton voltarApaginaInicialButton = new JButton("Voltar a Página Inicial");
 
+        panel.add(fraseLabel);
+        panel.add(fraseLabel2);
         panel.add(cadastrarJogadorButton);
         panel.add(consultarJogadorButton);
         panel.add(atualizarJogadorButton);
@@ -88,7 +93,6 @@ public class ScreenJogador extends JFrame {
         JButton voltarButton;
         ControllerJogador controller = new ControllerJogador();
         
-        // Configuração da tela de cadastro
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setBounds(30, 200, 0, 0);
         frame.setSize(800, 400);
@@ -96,7 +100,6 @@ public class ScreenJogador extends JFrame {
         frame.setLocationRelativeTo(null);
         frame.setLayout(new GridLayout(5, 2));
     
-        // Adicionando os campos de input
         JPanel inputs = new JPanel(new GridLayout(5, 2));
         inputs.add(new JLabel("Nome Jogador:"));
         nomeField = new JTextField();
@@ -120,7 +123,6 @@ public class ScreenJogador extends JFrame {
     
         frame.add(inputs);
     
-        // Botão Salvar
         salvarButton = new JButton("Salvar");
         salvarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -137,21 +139,17 @@ public class ScreenJogador extends JFrame {
         frame.add(salvarButton);
         frame.setVisible(true);
     
-        // Botão Voltar
         voltarButton = new JButton("Voltar");
         voltarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Fechar a janela de cadastro e voltar ao menu principal
-                frame.dispose();  // Fecha a tela de cadastro
-                telaMenuJogador();  // Reabre o menu principal na mesma janela
+                frame.dispose();  
+                telaMenuJogador();  
             }
         });
         frame.add(voltarButton);
         frame.setVisible(true);
     }
     
-
-
     public void telaAtualizarJogador() {
         JTextField nomeField;
         JTextField idadeField;

@@ -142,7 +142,8 @@ public class ScreenArbitro extends JFrame {
         voltarButton = new JButton("Voltar");
         voltarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                dispose();
+                frame.dispose();  
+                telaMenuArbitro();
 
             }
         });
