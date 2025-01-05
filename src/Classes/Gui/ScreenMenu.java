@@ -26,7 +26,7 @@ public class ScreenMenu extends JFrame {
 
         JPanel panel = new JPanel(new GridLayout(5, 1));
         panel.setBorder(BorderFactory.createEmptyBorder(40,100,40,100));
-        JLabel fraseLabel = new JLabel("Bem Vindo ao Campeonato X", SwingConstants.CENTER);
+        JLabel fraseLabel = new JLabel("Bem Vindo ao Xeque & Mate ♙", SwingConstants.CENTER);
         fraseLabel.setFont(new Font("Arial", Font.BOLD, 24));
         JButton gerirJogadoresButton = new JButton("Gerir Jogadores");
         JButton gerirArbitrosButton = new JButton("Gerir Árbitros");

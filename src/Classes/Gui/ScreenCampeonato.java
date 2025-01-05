@@ -12,10 +12,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import Classes.Controller.ControllerArbitro;
+import Classes.Controller.ControllerCampeonato;
+import Classes.Controller.ControllerPartida;
+
 
 public class ScreenCampeonato extends JFrame {
 
-    public void telaPrincipal(){
+
+    public void telaMenuCampeonato(){
         setTitle("Gestão de Campeonatos");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 400);
@@ -24,15 +28,15 @@ public class ScreenCampeonato extends JFrame {
         setLayout(new GridLayout(5, 1));
         setLayout(new BorderLayout(75,75));
 
-        JPanel panel = new JPanel(new GridLayout(5, 1));
+        JPanel panel = new JPanel(new GridLayout(6, 1));
         panel.setBorder(BorderFactory.createEmptyBorder(40,100,40,100));
         JLabel fraseLabel = new JLabel("Gestão de Campeonatos", SwingConstants.CENTER);
         fraseLabel.setFont(new Font("Arial", Font.BOLD, 24));
         JButton gerirPartidasButton = new JButton("Gerir Partidas");
         JButton gerirTorneiosButton = new JButton("Gerir Campeonato");
         JButton visualizarRankingButton = new JButton("Visualizar Ranking");
-        JButton visualizarPremiacoesButton = new JButton("Visualizar Premiacoes");
-        JButton voltarApaginaInicialButton = new JButton("Voltar a Pagina Inicial");
+        JButton visualizarPremiacoesButton = new JButton("Visualizar Premiações");
+        JButton voltarApaginaInicialButton = new JButton("Voltar a Página Inicial");
 
         panel.add(fraseLabel);
         panel.add(gerirPartidasButton);
@@ -58,8 +62,8 @@ public class ScreenCampeonato extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScreenCampeonato screenCampeonato = new ScreenArbitro();
-                screenCampeonato.telaGerirCampeonato();
+                ScreenCampeonato screenCampeonato = new ScreenCampeonato();
+                screenCampeonato.telaMenuCampeonato();
             }
             
         });
@@ -89,7 +93,7 @@ public class ScreenCampeonato extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                dispose();
             }
             
         });
@@ -100,9 +104,10 @@ public class ScreenCampeonato extends JFrame {
         JTextField partidasSingularesField;
         JTextField partidasDuplasField;
         JButton salvarButton;
+        JButton sairButton;
         ControllerCampeonato gerirPartidas;
 
-        gerirPartidas = new ControllerArbitro();
+        gerirPartidas = new ControllerPartida();
 
         frame.setTitle("Gerir Partidas");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

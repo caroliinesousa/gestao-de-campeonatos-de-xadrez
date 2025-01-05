@@ -11,7 +11,7 @@ public class ScreenJogador extends JFrame {
     }
 
     public void telaMenuJogador() {
-        setTitle("Gestao de Jogadores");
+        setTitle("Gestão de Jogadores");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
@@ -19,7 +19,7 @@ public class ScreenJogador extends JFrame {
 
         JPanel panel = new JPanel(new GridLayout(6, 1));
         panel.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));
-        JLabel fraseLabel = new JLabel("Gestao de Jogadores", SwingConstants.CENTER);
+        JLabel fraseLabel = new JLabel("Gestão de Jogadores", SwingConstants.CENTER);
         fraseLabel.setFont(new Font("Arial", Font.BOLD, 24));
         JButton cadastrarJogadorButton = new JButton("Cadastrar Jogador");
         JButton consultarJogadorButton = new JButton("Consultar Jogador");
@@ -72,7 +72,7 @@ public class ScreenJogador extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                dispose();
             }
             
         });
@@ -86,8 +86,9 @@ public class ScreenJogador extends JFrame {
         JTextField rankingField;
         JTextField partidasField;
         JButton salvarButton;
+        JButton voltarButton;
         ControllerJogador controller = new ControllerJogador();
-
+        
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setBounds(30, 200, 0, 0);
         frame.setSize(800, 400);
@@ -135,6 +136,16 @@ public class ScreenJogador extends JFrame {
         frame.add(salvarButton);
         frame.setVisible(true);
 
+        voltarButton = new JButton("Voltar");
+        voltarButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+
+            }
+        });
+        frame.add(voltarButton);
+        frame.setVisible(true);
+
     }
 
     public void telaAtualizarJogador() {
@@ -144,6 +155,7 @@ public class ScreenJogador extends JFrame {
         JTextField rankingField;
         JTextField partidasField;
         JButton atualizarButton;
+        JButton voltarButton;
         ControllerJogador atualizarJogador;
         atualizarJogador = new ControllerJogador();
 
@@ -193,12 +205,24 @@ public class ScreenJogador extends JFrame {
         });
         add(atualizarButton);
         setVisible(true);
+
+        voltarButton = new JButton("Voltar");
+        voltarButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+
+            }
+        });
+        add(voltarButton);
+        setVisible(true);
+
     }
 
     public void telaConsultarJogador() {
         JTextField nomeField;
         JButton salvarButton;
         ControllerJogador consultarJogador;
+        JButton voltarButton;
         consultarJogador = new ControllerJogador();
 
         setTitle("Consulta de Jogador");
@@ -226,28 +250,39 @@ public class ScreenJogador extends JFrame {
         });
         add(salvarButton);
         setVisible(true);
+
+        voltarButton = new JButton("Voltar");
+        voltarButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+
+            }
+        });
+        add(voltarButton);
+        setVisible(true);
     }
 
     public void telaExcluirJogador() {
-        JFrame frame = new JFrame("Excluir Jogador");
+        
         JTextField nomeField;
         JButton excluirButton;
+        JButton voltarButton;
         ControllerJogador excluirJogador;
         excluirJogador = new ControllerJogador();
 
-        frame.setTitle("Excluir Jogador");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(800, 400);
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(new GridLayout(3, 1));
+        setTitle("Excluir Jogador");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(800, 400);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setLayout(new GridLayout(3, 1));
 
         JPanel inputs = new JPanel(new GridLayout(3, 3));
         inputs.add(new JLabel("Nome Jogador:", SwingConstants.CENTER));
         nomeField = new JTextField();
         inputs.add(nomeField);
 
-        frame.add(inputs);
+        add(inputs);
 
         excluirButton = new JButton("Excluir");
         excluirButton.addActionListener(new ActionListener() {
@@ -258,8 +293,18 @@ public class ScreenJogador extends JFrame {
 
             }
         });
-        frame.add(excluirButton);
-        frame.setVisible(true);
+        add(excluirButton);
+        setVisible(true);
+
+        voltarButton = new JButton("Voltar");
+        voltarButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+
+            }
+        });
+        add(voltarButton);
+        setVisible(true);
     }
 
     public void telaVoltarAoMenu() {
@@ -271,14 +316,6 @@ public class ScreenJogador extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
     
-        voltarApaginaInicialButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-                dispose(); 
-                screenJogador.setVisible(true);
-                screenJogador.toFront();
-            }
-        });
+       
+        }
     }
-}
