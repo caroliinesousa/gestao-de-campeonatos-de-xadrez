@@ -20,13 +20,10 @@ public class ScreenArbitro extends JFrame {
         setLayout(new GridLayout(6, 1));
         setLayout(new BorderLayout(75,75));
 
-        JPanel panel = new JPanel(new GridLayout(7, 1));
+        JPanel panel = new JPanel(new GridLayout(6, 1));
         panel.setBorder(BorderFactory.createEmptyBorder(40,100,40,100));
         JLabel fraseLabel = new JLabel("Gestão de Árbitros", SwingConstants.CENTER);
-        fraseLabel.setFont(new Font("Arial", Font.BOLD, 28));
-        JLabel fraseLabel2 = new JLabel("Gerencie os Árbitros com facilidade. Escolha uma das opções para começar!", SwingConstants.CENTER);
-        fraseLabel2.setFont(new Font("Arial", Font.PLAIN, 12));
-
+        fraseLabel.setFont(new Font("Arial", Font.BOLD, 24));
         JButton cadastrarArbitroButton = new JButton("Cadastrar Árbitro");
         JButton consultarArbitroButton = new JButton("Consultar Árbitro");
         JButton atualizarArbitroButton = new JButton("Atualizar Árbitro");
@@ -35,7 +32,6 @@ public class ScreenArbitro extends JFrame {
 
 
         panel.add(fraseLabel);
-        panel.add(fraseLabel2);
         panel.add(cadastrarArbitroButton);
         panel.add(consultarArbitroButton);
         panel.add(atualizarArbitroButton);
@@ -88,67 +84,67 @@ public class ScreenArbitro extends JFrame {
 
     }
     public void telaCadastrarArbitro() {
-        JFrame frame = new JFrame("Cadastro de Arbitro");
-        JTextField nomeField;
-        JTextField idadeField;
-        JTextField sexoField;
-        JTextField certificacoesField;
-        JButton salvarButton;
-        JButton voltarButton;
-        ControllerArbitro cadastrarArbitro;
+    JFrame frame = new JFrame("Cadastro de Arbitro");
+    JTextField nomeField;
+    JTextField idadeField;
+    JTextField sexoField;
+    JTextField certificacoesField;
+    JButton salvarButton;
+    JButton voltarButton;
+    ControllerArbitro cadastrarArbitro;
 
-        cadastrarArbitro = new ControllerArbitro();
+    cadastrarArbitro = new ControllerArbitro();
 
-        frame.setTitle("Cadastro de arbitro");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(800, 400);
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(new GridLayout(5, 2));
+    frame.setTitle("Cadastro de arbitro");
+    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    frame.setSize(800, 400);
+    frame.setResizable(false);
+    frame.setLocationRelativeTo(null);
+    frame.setLayout(new GridLayout(5, 2));
 
-        JPanel inputs = new JPanel(new GridLayout(5, 2));
-        inputs.add(new JLabel("Nome arbitro:"));
-        nomeField = new JTextField();
-        inputs.add(nomeField);
+    JPanel inputs = new JPanel(new GridLayout(5, 2));
+    inputs.add(new JLabel("Nome arbitro:"));
+    nomeField = new JTextField();
+    inputs.add(nomeField);
 
-        inputs.add(new JLabel("Idade arbitro:"));
-        idadeField = new JTextField();
-        inputs.add(idadeField);
+    inputs.add(new JLabel("Idade arbitro:"));
+    idadeField = new JTextField();
+    inputs.add(idadeField);
 
-        inputs.add(new JLabel("Gênero arbitro:"));
-        sexoField = new JTextField();
-        inputs.add(sexoField);
+    inputs.add(new JLabel("Gênero arbitro:"));
+    sexoField = new JTextField();
+    inputs.add(sexoField);
 
-        inputs.add(new JLabel("Certificacoes:"));
-        certificacoesField = new JTextField();
-        inputs.add(certificacoesField);
+    inputs.add(new JLabel("Certificacoes:"));
+    certificacoesField = new JTextField();
+    inputs.add(certificacoesField);
 
-        frame.add(inputs);
+    frame.add(inputs);
 
-        salvarButton = new JButton("Salvar");
-        salvarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cadastrarArbitro.cadastrarArbitro(nomeField.getText(), idadeField.getText(), sexoField.getText(), certificacoesField.getText());
-                nomeField.setText("");
-                idadeField.setText("");
-                sexoField.setText("");
-                certificacoesField.setText("");
-            }
-        });
-        frame.add(salvarButton);
-        frame.setVisible(true);
+    salvarButton = new JButton("Salvar");
+    salvarButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            cadastrarArbitro.cadastrarArbitro(nomeField.getText(), idadeField.getText(), sexoField.getText(), certificacoesField.getText());
+            nomeField.setText("");
+            idadeField.setText("");
+            sexoField.setText("");
+            certificacoesField.setText("");
+        }
+    });
+    frame.add(salvarButton);
 
-        voltarButton = new JButton("Voltar");
-        voltarButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                dispose();
+    voltarButton = new JButton("Voltar");
+    voltarButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();  // Fecha a janela de cadastro e volta à tela principal
+            setVisible(true);  // Mostra a tela principal novamente
+        }
+    });
+    frame.add(voltarButton);
+    frame.setVisible(true);
+}
 
-            }
-        });
-        frame.add(voltarButton);
-        frame.setVisible(true);
-    }
 
     public void telaAtualizarArbitro() {
         JTextField nomeField;
@@ -317,4 +313,3 @@ public class ScreenArbitro extends JFrame {
     }
 
 }
-
