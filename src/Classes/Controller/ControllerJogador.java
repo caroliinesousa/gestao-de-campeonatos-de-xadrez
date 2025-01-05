@@ -1,5 +1,4 @@
 package Classes.Controller;
-
 import Classes.Pessoas.Jogador;
 import java.io.File;
 import java.io.FileWriter;
@@ -21,14 +20,11 @@ public class ControllerJogador {
         } catch (IOException e) {
             System.err.println(e.getStackTrace()); // devolve o erro
         }
-
     }
 
     private void salvarNoArquivo(Jogador jogador) throws IOException {
         try (PrintWriter writer = new PrintWriter(new FileWriter(NOME_ARQUIVO, true))) {
-            writer.println("Nome: " + jogador.getNome() + ", Idade: " + jogador.getIdade() + ", Gênero: "
-                    + jogador.getGenero() + ", Ranking: " + jogador.getRanking() + ", Partidas jogadas: "
-                    + jogador.getPartidasJogadas());
+            writer.println("Nome: " + jogador.getNome() + ", Idade: " + jogador.getIdade() + ", Gênero: " + jogador.getGenero() + ", Ranking: " + jogador.getRanking() + ", Partidas jogadas: "+ jogador.getPartidasJogadas());
         }
     }
 
@@ -78,7 +74,6 @@ public class ControllerJogador {
     }
 
     public void consultarJogador(String nome) {
-
         try {
             File arquivo = new File(NOME_ARQUIVO);
             if (!arquivo.exists()) {
