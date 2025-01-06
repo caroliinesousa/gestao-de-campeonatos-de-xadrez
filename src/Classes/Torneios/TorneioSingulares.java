@@ -1,6 +1,5 @@
 package Classes.Torneios;
 import java.util.ArrayList;
-
 import Classes.Partidas.PartidaSingulares;
 import Classes.Pessoas.Jogador;
 

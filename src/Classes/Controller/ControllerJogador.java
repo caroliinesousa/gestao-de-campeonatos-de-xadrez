@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JButton;
 
 public class ControllerJogador {
     private String NOME_ARQUIVO = "informacoesJogadores.txt";
@@ -73,70 +74,82 @@ public class ControllerJogador {
         }
     }
 
-    public void consultarJogador(String nome) {
-        try {
-            File arquivo = new File(NOME_ARQUIVO);
-            if (!arquivo.exists()) {
-                System.out.println("Arquivo de informações não encontrado!");
-                return;
-            }
+    public boolean consultarJogador(String nome, JButton cadastrarButton) {
+    File arquivo = new File(NOME_ARQUIVO);
 
-            boolean encontrado = false;
-            Scanner scanner = new Scanner(arquivo);
-            while (scanner.hasNextLine()) {
-                String linha = scanner.nextLine();
-                if (linha.contains("Nome: " + nome)) {
-                    System.out.println("Jogador encontrado: " + linha);
-                    encontrado = true;
-                    break;
-                }
-            }
-            scanner.close();
-
-            if (!encontrado) {
-                System.out.println("Jogador não encontrado!");
-            }
-        } catch (IOException ex) {
-            System.out.println("Erro ao consultar jogador: " + ex.getMessage());
-        }
+    if (!arquivo.exists()) {
+        System.out.println("Arquivo de informações não encontrado!");
+        return false;
     }
+
+    boolean encontrado = false;
+
+    try (Scanner scanner = new Scanner(arquivo)) {
+        while (scanner.hasNextLine()) {
+            String linha = scanner.nextLine();
+            if (linha.toLowerCase().contains(("Nome: " + nome).toLowerCase())) {
+                System.out.println("Jogador encontrado: " + linha);
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (!encontrado) {
+            System.out.println("Jogador não encontrado!");
+            cadastrarButton.setVisible(true); 
+        } else {
+            cadastrarButton.setVisible(false); 
+        }
+
+    } catch (IOException ex) {
+        System.out.println("Erro ao consultar jogador: " + ex.getMessage());
+        return false;
+    }
+
+    return encontrado;
+}
+
 
     public void excluirJogador(String nome) {
         try {
             File arquivo = new File(NOME_ARQUIVO);
             if (!arquivo.exists()) {
                 System.out.println("Arquivo de informações não encontrado!");
+                return;
             }
-
+    
             ArrayList<String> registros = new ArrayList<>();
             boolean encontrado = false;
-
-            Scanner scanner = new Scanner(arquivo);
-            while (scanner.hasNextLine()) {
-                String linha = scanner.nextLine();
-                if (linha.contains("Nome: " + nome)) {
-                    encontrado = true;
-                } else {
-                    registros.add(linha);
+    
+            try (Scanner scanner = new Scanner(arquivo)) {
+                while (scanner.hasNextLine()) {
+                    String linha = scanner.nextLine().trim();
+                    if (linha.toLowerCase().contains(("Nome: " + nome).toLowerCase())) {
+                        encontrado = true;
+                    } else if (!linha.isEmpty()) {
+                        registros.add(linha);
+                    }
                 }
             }
-            scanner.close();
 
             if (!encontrado) {
                 System.out.println("Jogador não encontrado!");
+                return;
             }
-
-            PrintWriter writer = new PrintWriter(new FileWriter(NOME_ARQUIVO));
-            for (String registro : registros) {
-                writer.println(registro);
+    
+            // Escrita no arquivo
+            try (PrintWriter writer = new PrintWriter(new FileWriter(NOME_ARQUIVO))) {
+                for (String registro : registros) {
+                    writer.println(registro);
+                }
             }
-            writer.close();
-
+    
             System.out.println("Jogador excluído com sucesso!");
-
+    
         } catch (IOException ex) {
             System.out.println("Erro ao excluir jogador: " + ex.getMessage());
         }
-
     }
+    
+    
 }

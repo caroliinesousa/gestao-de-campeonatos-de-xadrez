@@ -14,8 +14,6 @@ import javax.swing.SwingConstants;
 import Classes.Controller.ControllerArbitro;
 import Classes.Controller.ControllerCampeonato;
 
-
-
 public class ScreenCampeonato extends JFrame {
 
 

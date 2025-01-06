@@ -9,7 +9,6 @@ public class ScreenJogador extends JFrame {
 
     public ScreenJogador() {
     }
-
     public void telaMenuJogador() {
         setTitle("Gestão de Jogadores");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -78,7 +77,7 @@ public class ScreenJogador extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
             }
-            
+
         });
     }
 
@@ -92,38 +91,45 @@ public class ScreenJogador extends JFrame {
         JButton salvarButton;
         JButton voltarButton;
         ControllerJogador controller = new ControllerJogador();
-        
+
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setBounds(30, 200, 0, 0);
         frame.setSize(800, 400);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
-        frame.setLayout(new GridLayout(5, 2));
-    
-        JPanel inputs = new JPanel(new GridLayout(5, 2));
+        frame.setLayout(new BorderLayout());
+
+        JPanel inputs = new JPanel(new GridLayout(5, 2, 10, 10));
+        inputs.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
         inputs.add(new JLabel("Nome Jogador:"));
         nomeField = new JTextField();
         inputs.add(nomeField);
-    
+
         inputs.add(new JLabel("Idade Jogador:"));
         idadeField = new JTextField();
         inputs.add(idadeField);
-    
+
         inputs.add(new JLabel("Gênero Jogador:"));
         sexoField = new JTextField();
         inputs.add(sexoField);
-    
+
         inputs.add(new JLabel("Ranking Jogador:"));
         rankingField = new JTextField();
         inputs.add(rankingField);
-    
+
         inputs.add(new JLabel("Partidas Jogador:"));
         partidasField = new JTextField();
         inputs.add(partidasField);
-    
-        frame.add(inputs);
-    
+
+        frame.add(inputs, BorderLayout.CENTER);
+
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
+
         salvarButton = new JButton("Salvar");
+        salvarButton.setPreferredSize(new Dimension(120, 40));
+        salvarButton.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.GRAY, 1),
+                BorderFactory.createEmptyBorder(5, 15, 5, 15)));
         salvarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int rankingInt = Integer.parseInt(rankingField.getText());
@@ -136,188 +142,263 @@ public class ScreenJogador extends JFrame {
                 partidasField.setText("");
             }
         });
-        frame.add(salvarButton);
-        frame.setVisible(true);
-    
-        voltarButton = new JButton("Voltar");
-        voltarButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();  
-                telaMenuJogador();  
-            }
-        });
-        frame.add(voltarButton);
-        frame.setVisible(true);
-    }
-    
-    public void telaAtualizarJogador() {
-        JTextField nomeField;
-        JTextField idadeField;
-        JTextField sexoField;
-        JTextField rankingField;
-        JTextField partidasField;
-        JButton atualizarButton;
-        JButton voltarButton;
-        ControllerJogador atualizarJogador;
-        atualizarJogador = new ControllerJogador();
-
-        setTitle("Atualizar Jogador");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(800, 400);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setLayout(new GridLayout(5, 2));
-
-        JPanel inputs = new JPanel(new GridLayout(5, 2));
-        inputs.add(new JLabel("Nome Jogador:"));
-        nomeField = new JTextField();
-        inputs.add(nomeField);
-
-        inputs.add(new JLabel("Idade Jogador:"));
-        idadeField = new JTextField();
-        inputs.add(idadeField);
-
-        inputs.add(new JLabel("Gênero Jogador:"));
-        sexoField = new JTextField();
-        inputs.add(sexoField);
-
-        inputs.add(new JLabel("Ranking Jogador:"));
-        rankingField = new JTextField();
-        inputs.add(rankingField);
-
-        inputs.add(new JLabel("Partidas Jogador:"));
-        partidasField = new JTextField();
-        inputs.add(partidasField);
-
-        add(inputs);
-
-        atualizarButton = new JButton("Atualizar");
-        atualizarButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                int rankingInt = Integer.parseInt(rankingField.getText());
-                int partidasInt = Integer.parseInt(partidasField.getText());
-                atualizarJogador.atualizarJogador(nomeField.getText(), idadeField.getText(), sexoField.getText(), rankingInt, partidasInt);
-                nomeField.setText("");
-                idadeField.setText("");
-                sexoField.setText("");
-                rankingField.setText("");
-                partidasField.setText("");
-
-            }
-        });
-        add(atualizarButton);
-        setVisible(true);
 
         voltarButton = new JButton("Voltar");
+        voltarButton.setPreferredSize(new Dimension(120, 40));
+        voltarButton.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.GRAY, 1),
+                BorderFactory.createEmptyBorder(5, 15, 5, 15)));
         voltarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                dispose();
-
+                frame.dispose();
+                telaMenuJogador();
             }
         });
-        add(voltarButton);
-        setVisible(true);
 
+        buttonPanel.add(salvarButton);
+        buttonPanel.add(voltarButton);
+
+        frame.add(buttonPanel, BorderLayout.SOUTH);
+        frame.setVisible(true);
     }
 
     public void telaConsultarJogador() {
+        JFrame frame = new JFrame("Consulta de Jogador");
         JTextField nomeField;
-        JButton salvarButton;
-        ControllerJogador consultarJogador;
+        JButton consultarButton;
         JButton voltarButton;
-        consultarJogador = new ControllerJogador();
-
-        setTitle("Consulta de Jogador");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(800, 400);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setLayout(new GridLayout(3, 1));
-
-        JPanel inputs = new JPanel(new GridLayout(3, 3));
-        inputs.add(new JLabel("Nome Jogador:", SwingConstants.CENTER));
-        nomeField = new JTextField();
-        inputs.add(nomeField);
-
-        add(inputs);
-
-        salvarButton = new JButton("Consultar");
-        salvarButton.addActionListener(new ActionListener() {
+        JButton cadastrarButton = new JButton("Cadastrar Jogador");
+        JLabel statusLabel;
+    
+        ControllerJogador consultarJogador = new ControllerJogador();
+    
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(800, 400);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        frame.setLayout(new BorderLayout());
+    
+        JPanel inputsPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+    
+        JLabel nomeLabel = new JLabel("Nome do Jogador:");
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        inputsPanel.add(nomeLabel, gbc);
+    
+        nomeField = new JTextField(20);
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        inputsPanel.add(nomeField, gbc);
+    
+        frame.add(inputsPanel, BorderLayout.CENTER);
+    
+        statusLabel = new JLabel(" ", SwingConstants.CENTER);
+        statusLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        frame.add(statusLabel, BorderLayout.NORTH);
+    
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
+    
+        consultarButton = new JButton("Consultar");
+        consultarButton.setPreferredSize(new Dimension(120, 40));
+        consultarButton.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(Color.GRAY, 1),
+            BorderFactory.createEmptyBorder(5, 15, 5, 15)
+        ));
+        consultarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                consultarJogador.consultarJogador(nomeField.getText());
+                String nomeJogador = nomeField.getText();
+                boolean encontrado = consultarJogador.consultarJogador(nomeJogador, cadastrarButton);
+                if (encontrado) {
+                    statusLabel.setText("Jogador encontrado: " + nomeJogador);
+                    statusLabel.setForeground(Color.GREEN);
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Jogador não encontrado. Você pode cadastrá-lo agora.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                    statusLabel.setText("Jogador não encontrado.");
+                    statusLabel.setForeground(Color.RED);
+                }
                 nomeField.setText("");
-
             }
         });
-        add(salvarButton);
-        setVisible(true);
-
+    
         voltarButton = new JButton("Voltar");
+        voltarButton.setPreferredSize(new Dimension(120, 40));
+        voltarButton.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(Color.GRAY, 1),
+            BorderFactory.createEmptyBorder(5, 15, 5, 15)
+        ));
         voltarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                dispose();
-
+                frame.dispose();
             }
         });
-        add(voltarButton);
-        setVisible(true);
-    }
+    
+        cadastrarButton.setPreferredSize(new Dimension(150, 40));
+        cadastrarButton.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(Color.GRAY, 1),
+            BorderFactory.createEmptyBorder(5, 15, 5, 15)
+        ));
+        cadastrarButton.setVisible(false);
+        cadastrarButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                telaCadastrarJogador();
+            }
+        });
+    
+        buttonPanel.add(consultarButton);
+        buttonPanel.add(voltarButton);
+        buttonPanel.add(cadastrarButton);
+    
+        frame.add(buttonPanel, BorderLayout.SOUTH);
+        frame.setVisible(true);
+    }    
+
+    public void telaAtualizarJogador() {
+    JFrame frame = new JFrame("Atualizar Jogador");
+    JTextField nomeField;
+    JTextField idadeField;
+    JTextField sexoField;
+    JTextField rankingField;
+    JTextField partidasField;
+    JButton atualizarButton;
+    JButton voltarButton;
+    ControllerJogador atualizarJogador = new ControllerJogador();
+
+    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    frame.setSize(800, 400);
+    frame.setResizable(false);
+    frame.setLocationRelativeTo(null);
+    frame.setLayout(new BorderLayout());
+
+    JPanel inputs = new JPanel(new GridLayout(5, 2, 10, 10));
+    inputs.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+    inputs.add(new JLabel("Nome Jogador:"));
+    nomeField = new JTextField();
+    inputs.add(nomeField);
+
+    inputs.add(new JLabel("Idade Jogador:"));
+    idadeField = new JTextField();
+    inputs.add(idadeField);
+
+    inputs.add(new JLabel("Gênero Jogador:"));
+    sexoField = new JTextField();
+    inputs.add(sexoField);
+
+    inputs.add(new JLabel("Ranking Jogador:"));
+    rankingField = new JTextField();
+    inputs.add(rankingField);
+
+    inputs.add(new JLabel("Partidas Jogador:"));
+    partidasField = new JTextField();
+    inputs.add(partidasField);
+
+    frame.add(inputs, BorderLayout.CENTER);
+
+    JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
+
+    atualizarButton = new JButton("Atualizar");
+    atualizarButton.setPreferredSize(new Dimension(120, 40));
+    atualizarButton.setBorder(BorderFactory.createCompoundBorder(
+        BorderFactory.createLineBorder(Color.GRAY, 1),
+        BorderFactory.createEmptyBorder(5, 15, 5, 15)
+    ));
+    atualizarButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            int rankingInt = Integer.parseInt(rankingField.getText());
+            int partidasInt = Integer.parseInt(partidasField.getText());
+            atualizarJogador.atualizarJogador(nomeField.getText(), idadeField.getText(), sexoField.getText(), rankingInt, partidasInt);
+            nomeField.setText("");
+            idadeField.setText("");
+            sexoField.setText("");
+            rankingField.setText("");
+            partidasField.setText("");
+        }
+    });
+
+    voltarButton = new JButton("Voltar");
+    voltarButton.setPreferredSize(new Dimension(120, 40));
+    voltarButton.setBorder(BorderFactory.createCompoundBorder(
+        BorderFactory.createLineBorder(Color.GRAY, 1),
+        BorderFactory.createEmptyBorder(5, 15, 5, 15)
+    ));
+    voltarButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+        }
+    });
+
+    buttonPanel.add(atualizarButton);
+    buttonPanel.add(voltarButton);
+
+    frame.add(buttonPanel, BorderLayout.SOUTH);
+    frame.setVisible(true);
+}
 
     public void telaExcluirJogador() {
-        
-        JTextField nomeField;
-        JButton excluirButton;
-        JButton voltarButton;
-        ControllerJogador excluirJogador;
-        excluirJogador = new ControllerJogador();
+    JFrame frame = new JFrame("Excluir Jogador");
+    JTextField nomeField;
+    JButton excluirButton;
+    JButton voltarButton;
+    ControllerJogador excluirJogador = new ControllerJogador();
 
-        setTitle("Excluir Jogador");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(800, 400);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setLayout(new GridLayout(3, 1));
+    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    frame.setSize(600, 250);  // Reduzido o tamanho da tela
+    frame.setResizable(false);
+    frame.setLocationRelativeTo(null);
+    frame.setLayout(new BorderLayout());
 
-        JPanel inputs = new JPanel(new GridLayout(3, 3));
-        inputs.add(new JLabel("Nome Jogador:", SwingConstants.CENTER));
-        nomeField = new JTextField();
-        inputs.add(nomeField);
+    // Painel de inputs
+    JPanel inputs = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+    inputs.setBorder(BorderFactory.createEmptyBorder(20, 20, 10, 20));
 
-        add(inputs);
+    JLabel nomeLabel = new JLabel("Nome Jogador:");
+    nomeLabel.setPreferredSize(new Dimension(100, 30));  // Definir tamanho fixo do rótulo
+    inputs.add(nomeLabel);
 
-        excluirButton = new JButton("Excluir");
-        excluirButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                excluirJogador.excluirJogador(nomeField.getText());
-                nomeField.setText("");
+    nomeField = new JTextField();
+    nomeField.setPreferredSize(new Dimension(200, 30));  // Caixa de texto reduzida
+    inputs.add(nomeField);
 
-            }
-        });
-        add(excluirButton);
-        setVisible(true);
+    frame.add(inputs, BorderLayout.CENTER);
 
-        voltarButton = new JButton("Voltar");
-        voltarButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                dispose();
+    // Painel de botões
+    JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
-            }
-        });
-        add(voltarButton);
-        setVisible(true);
-    }
-
-    public void telaVoltarAoMenu() {
-        JButton voltarApaginaInicialButton;
-        
-        setTitle("Menu Principal");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(800, 400);
-        setResizable(false);
-        setLocationRelativeTo(null);
-    
-       
+    excluirButton = new JButton("Excluir");
+    excluirButton.setPreferredSize(new Dimension(120, 40));
+    excluirButton.setBorder(BorderFactory.createCompoundBorder(
+        BorderFactory.createLineBorder(Color.GRAY, 1),
+        BorderFactory.createEmptyBorder(5, 15, 5, 15)
+    ));
+    excluirButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            excluirJogador.excluirJogador(nomeField.getText());
+            nomeField.setText("");
         }
-    }
+    });
+
+    voltarButton = new JButton("Voltar");
+    voltarButton.setPreferredSize(new Dimension(120, 40));
+    voltarButton.setBorder(BorderFactory.createCompoundBorder(
+        BorderFactory.createLineBorder(Color.GRAY, 1),
+        BorderFactory.createEmptyBorder(5, 15, 5, 15)
+    ));
+    voltarButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+        }
+    });
+
+    buttonPanel.add(excluirButton);
+    buttonPanel.add(voltarButton);
+
+    frame.add(buttonPanel, BorderLayout.SOUTH);
+    frame.setVisible(true);
+}
+}

@@ -1,4 +1,7 @@
-Nome: Aury, Idade: 31, Gï¿½nero: F, Ranking: 9, Partidas jogadas: 4
-Nome: Bruno Sousa, Idade: 29, Gênero: M, Ranking: 9, Partidas jogadas: 2
-Nome: Edna, Idade: 24, Gênero: F, Ranking: 7, Partidas jogadas: 8
-Nome: Joana, Idade: 22, Gênero: F, Ranking: 13, Partidas jogadas: 2
+Nome: Vitor, Idade: 26, Gênero: M, Ranking: 3, Partidas jogadas: 10
+Nome: Edna, Idade: 24, Gênero: F, Ranking: 5, Partidas jogadas: 9
+Nome: Rita, Idade: 30, Gênero: F, Ranking: 4, Partidas jogadas: 9
+Nome: Antonio, Idade: 30, Gênero: M, Ranking: 10, Partidas jogadas: 1
+Nome: Bruno, Idade: 29, Gênero: M, Ranking: 4, Partidas jogadas: 8
+Nome: Any , Idade: 29, Gênero: F, Ranking: 20, Partidas jogadas: 0
+Nome: 2, Idade: 22, Gênero: F, Ranking: 0, Partidas jogadas: 0

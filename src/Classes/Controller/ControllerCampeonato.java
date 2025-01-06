@@ -8,14 +8,12 @@ public class ControllerCampeonato {
         partidas = new ArrayList<>();
     }
 
-    // Método para cadastrar uma nova partida
     public void cadastrarPartida(String jogador1, String jogador2, String resultado) {
         Partida novaPartida = new Partida(jogador1, jogador2, resultado);
         partidas.add(novaPartida);
         System.out.println("Partida cadastrada com sucesso!");
     }
 
-    // Método para consultar uma partida pelo ID
     public String consultarPartida(String idPartida) {
         for (int i = 0; i < partidas.size(); i++) {
             Partida partida = partidas.get(i);
@@ -26,7 +24,6 @@ public class ControllerCampeonato {
         return "Partida não encontrada.";
     }
 
-    // Método para atualizar o resultado de uma partida
     public void atualizarPartida(String idPartida, String novoResultado) {
         for (int i = 0; i < partidas.size(); i++) {
             Partida partida = partidas.get(i);
@@ -39,7 +36,6 @@ public class ControllerCampeonato {
         System.out.println("Partida não encontrada.");
     }
 
-    // Método para excluir uma partida pelo ID
     public void excluirPartida(String idPartida) {
         for (int i = 0; i < partidas.size(); i++) {
             Partida partida = partidas.get(i);
@@ -52,7 +48,6 @@ public class ControllerCampeonato {
         System.out.println("Partida não encontrada.");
     }
 
-    // Classe interna representando uma partida
     private static class Partida {
         private static int contador = 1;
         private String id;
