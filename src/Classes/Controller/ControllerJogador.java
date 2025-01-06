@@ -109,7 +109,6 @@ public class ControllerJogador {
     return encontrado;
 }
 
-
     public void excluirJogador(String nome) {
         try {
             File arquivo = new File(NOME_ARQUIVO);

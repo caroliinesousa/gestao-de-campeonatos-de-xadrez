@@ -347,26 +347,24 @@ public class ScreenJogador extends JFrame {
     ControllerJogador excluirJogador = new ControllerJogador();
 
     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    frame.setSize(600, 250);  // Reduzido o tamanho da tela
+    frame.setSize(600, 250);  
     frame.setResizable(false);
     frame.setLocationRelativeTo(null);
     frame.setLayout(new BorderLayout());
 
-    // Painel de inputs
     JPanel inputs = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
     inputs.setBorder(BorderFactory.createEmptyBorder(20, 20, 10, 20));
 
     JLabel nomeLabel = new JLabel("Nome Jogador:");
-    nomeLabel.setPreferredSize(new Dimension(100, 30));  // Definir tamanho fixo do rótulo
+    nomeLabel.setPreferredSize(new Dimension(100, 30));  
     inputs.add(nomeLabel);
 
     nomeField = new JTextField();
-    nomeField.setPreferredSize(new Dimension(200, 30));  // Caixa de texto reduzida
+    nomeField.setPreferredSize(new Dimension(200, 30));  
     inputs.add(nomeField);
 
     frame.add(inputs, BorderLayout.CENTER);
 
-    // Painel de botões
     JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
     excluirButton = new JButton("Excluir");

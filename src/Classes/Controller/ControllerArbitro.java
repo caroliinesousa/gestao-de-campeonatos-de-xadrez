@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.JButton;
 import Classes.Pessoas.Arbitro;
 
 public class ControllerArbitro {
@@ -71,67 +72,78 @@ public class ControllerArbitro {
         }
     }
 
-    public void consultarArbitro(String nome) {
-        try {
-            File arquivo = new File(NOME_ARQUIVO);
-            if (arquivo.exists() == false) {
-                System.out.println("Árbitro não encontrado!");
-                return;
-            }
+    public boolean consultarArbitro(String nome, JButton cadastrarButton) {
+    File arquivo = new File(NOME_ARQUIVO);
 
-            Scanner scanner = new Scanner(arquivo);
-            while (scanner.hasNextLine()) {
-                String linha = scanner.nextLine();
-                if (linha.contains("Nome: " + nome)) {
-                    System.out.println(linha);
-                    scanner.close();
-                    return;
-                }
-            }
-            scanner.close();
-            System.out.println("Árbitro não encontrado!");
-
-        } catch (IOException ex) {
-            System.out.println("Erro ao consultar árbitro: " + ex.getMessage());
-        }
+    if (!arquivo.exists()) {
+        System.out.println("Arquivo de informações não encontrado!");
+        return false;
     }
 
-    public void excluirArbitro(String nome) {
-        try {
-            File arquivo = new File(NOME_ARQUIVO);
-            if (!arquivo.exists()) {
-                System.out.println("Árbitro não encontrado!");
+    boolean encontrado = false;
+
+    try (Scanner scanner = new Scanner(arquivo)) {
+        while (scanner.hasNextLine()) {
+            String linha = scanner.nextLine();
+            if (linha.toLowerCase().contains(("Nome: " + nome).toLowerCase())) {
+                System.out.println("Árbitro encontrado: " + linha);
+                encontrado = true;
+                break;
             }
+        }
 
-            ArrayList<String> registros = new ArrayList<>();
-            boolean encontrado = false;
+        if (!encontrado) {
+            System.out.println("Árbitro não encontrado!");
+            cadastrarButton.setVisible(true); 
+        } else {
+            cadastrarButton.setVisible(false); 
+        }
 
-            Scanner scanner = new Scanner(arquivo);
+    } catch (IOException ex) {
+        System.out.println("Erro ao consultar Árbitro: " + ex.getMessage());
+        return false;
+    }
+
+    return encontrado;
+}
+
+    public void excluirArbitro(String nome) {
+    try {
+        File arquivo = new File(NOME_ARQUIVO);
+        if (!arquivo.exists()) {
+            System.out.println("Arquivo de informações não encontrado!");
+            return;
+        }
+
+        ArrayList<String> registros = new ArrayList<>();
+        boolean encontrado = false;
+
+        try (Scanner scanner = new Scanner(arquivo)) {
             while (scanner.hasNextLine()) {
-                String linha = scanner.nextLine();
-                if (linha.contains("Nome: " + nome)) {
+                String linha = scanner.nextLine().trim();
+                if (linha.toLowerCase().contains(("Nome: " + nome).toLowerCase())) {
                     encontrado = true;
-                } else {
+                } else if (!linha.isEmpty()) {
                     registros.add(linha);
                 }
             }
-            scanner.close();
+        }
 
-            if (!encontrado) {
-                System.out.println("Árbitro não encontrado!");
-            }
+        if (!encontrado) {
+            System.out.println("Árbitro não encontrado!");
+            return;
+        }
 
-            PrintWriter writer = new PrintWriter(new FileWriter(NOME_ARQUIVO));
+        try (PrintWriter writer = new PrintWriter(new FileWriter(NOME_ARQUIVO))) {
             for (String registro : registros) {
                 writer.println(registro);
             }
-            writer.close();
-
-            System.out.println("Árbitro excluído com sucesso!");
-
-        } catch (IOException ex) {
-            System.out.println("Erro ao excluir Árbitro: " + ex.getMessage());
         }
 
+        System.out.println("Árbitro excluído com sucesso!");
+
+    } catch (IOException ex) {
+        System.out.println("Erro ao excluir Árbitro: " + ex.getMessage());
     }
+}
 }
