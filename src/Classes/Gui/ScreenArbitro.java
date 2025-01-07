@@ -274,61 +274,80 @@ public class ScreenArbitro extends JFrame {
         JTextField certificacoesField;
         JButton salvarButton;
         JButton voltarButton;
-        ControllerArbitro atualizarArbitro;
-
-        atualizarArbitro = new ControllerArbitro();
-
-        setTitle("Atualizar arbitro");
+        ControllerArbitro atualizarArbitro = new ControllerArbitro();
+    
+        setTitle("Atualizar Árbitro");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(5, 1));
-
-        JPanel inputs = new JPanel(new GridLayout(5, 2));
-        inputs.add(new JLabel("Nome arbitro:"));
+        setLayout(new BorderLayout());
+    
+        JPanel inputsPanel = new JPanel(new GridLayout(4, 2, 10, 10));
+        inputsPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+    
+        inputsPanel.add(new JLabel("Nome Árbitro:"));
         nomeField = new JTextField();
-        inputs.add(nomeField);
-
-        inputs.add(new JLabel("Idade arbitro:"));
+        inputsPanel.add(nomeField);
+    
+        inputsPanel.add(new JLabel("Idade Árbitro:"));
         idadeField = new JTextField();
-        inputs.add(idadeField);
-
-        inputs.add(new JLabel("Gênero arbitro:"));
+        inputsPanel.add(idadeField);
+    
+        inputsPanel.add(new JLabel("Gênero Árbitro:"));
         sexoField = new JTextField();
-        inputs.add(sexoField);
-
-        inputs.add(new JLabel("Certificacoes:"));
+        inputsPanel.add(sexoField);
+    
+        inputsPanel.add(new JLabel("Certificações:"));
         certificacoesField = new JTextField();
-        inputs.add(certificacoesField);
+        inputsPanel.add(certificacoesField);
+    
+        add(inputsPanel, BorderLayout.CENTER);
 
-
-        add(inputs);
-        
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
+    
         salvarButton = new JButton("Atualizar");
+        salvarButton.setPreferredSize(new Dimension(120, 40));
+        salvarButton.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(Color.GRAY, 1),
+            BorderFactory.createEmptyBorder(5, 15, 5, 15)
+        ));
         salvarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                atualizarArbitro.atualizarArbitro(nomeField.getText(), idadeField.getText(), sexoField.getText(), certificacoesField.getText());
+                atualizarArbitro.atualizarArbitro(
+                    nomeField.getText(),
+                    idadeField.getText(),
+                    sexoField.getText(),
+                    certificacoesField.getText()
+                );
                 nomeField.setText("");
                 idadeField.setText("");
                 sexoField.setText("");
                 certificacoesField.setText("");
             }
         });
-        add(salvarButton);
-        setVisible(true);
-
+    
         voltarButton = new JButton("Voltar");
+        voltarButton.setPreferredSize(new Dimension(120, 40));
+        voltarButton.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(Color.GRAY, 1),
+            BorderFactory.createEmptyBorder(5, 15, 5, 15)
+        ));
         voltarButton.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-
             }
         });
-        add(voltarButton);
+    
+        buttonPanel.add(salvarButton);
+        buttonPanel.add(voltarButton);
+    
+        add(buttonPanel, BorderLayout.SOUTH);
         setVisible(true);
     }
+    
 
     public void telaExcluirArbitro() {
         JFrame frame = new JFrame("Excluir Árbitro");
