@@ -5,14 +5,14 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import Classes.Controller.ControllerPartidas;
 
-public class ScreenPartidas extends JFrame {
+public class ScreenTorneios extends JFrame {
 
-    public ScreenPartidas() {
+    publicTorneios() {
 
     }
-    public void telaMenuPartidas(){
+    public void telaMenuTorneios(){
 
-        setTitle("Gestão de Partidas");
+        setTitle("Gestão de Torneios ");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
@@ -22,9 +22,9 @@ public class ScreenPartidas extends JFrame {
 
         JPanel panel = new JPanel(new GridLayout(7, 1));
         panel.setBorder(BorderFactory.createEmptyBorder(40,100,40,100));
-        JLabel fraseLabel = new JLabel("Gestão de Partidas", SwingConstants.CENTER);
+        JLabel fraseLabel = new JLabel("Gestão de Torneios ", SwingConstants.CENTER);
         fraseLabel.setFont(new Font("Arial", Font.BOLD, 28));
-        JLabel fraseLabel2 = new JLabel("Gerencie os Partidas com facilidade. Preencha as lacunas abaixo!", SwingConstants.CENTER);
+        JLabel fraseLabel2 = new JLabel("Gerencie os Torneios com facilidade. Preencha as lacunas abaixo!", SwingConstants.CENTER);
         fraseLabel2.setFont(new Font("Arial", Font.PLAIN, 12));
 
         JButton jogador1Button = new JButton("Jogador 1");
@@ -34,7 +34,6 @@ public class ScreenPartidas extends JFrame {
         JButton idPartidaButton = new JButton("ID Partida");
         JButton tempoPartidaButton = new JButton("Tempo da Partida");
         JButton voltarApaginaInicialButton = new JButton("Voltar a Página Inicial");
-
 
         panel.add(fraseLabel);
         panel.add(fraseLabel2);
@@ -52,48 +51,48 @@ public class ScreenPartidas extends JFrame {
         jogador1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScreenPartidas screenPartidas = new ScreenPartidas();
-                screenPartidas.telaJogador1();
+               ScreenTorneios screenTorneios = new ScreenTorneios();
+                screenTorneios.telaJogador1();
             }
         });
 
         jogador2Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScreenPartidas screenPartidas = new ScreenPartidas();
-                screenPartidas.telaJogador2();
+                ScreenTorneios screenTorneios = new ScreenTorneios();
+                screenTorneios.telaJogador2();
             }
         });
 
         arbitroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScreenPartidas screenPartidas = new ScreenPartidas();
-                screenPartidas.telaArbitro();
+                ScreenTorneios screenTorneios = new ScreenTorneios();
+                screenTorneios.telaArbitro();
             }
         });
 
         resultadoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScreenPartidas screenPartidas = new ScreenPartidas();
-                screenPartidas.telaResultado();
+                ScreenTorneios screenTorneios = new ScreenTorneios();
+                screenTorneios.telaResultado();
             }
         });
 
         idPartidaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScreenPartidas screenPartidas = new ScreenPartidas();
-                screenPartidas.telaidPartida();
+                ScreenTorneios screenTorneios = new ScreenTorneios();
+                screenTorneios.telaIdPartida();
             }
         });
 
         tempoPartidaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScreenPartidas screenPartidas = new ScreenPartidas();
-                screenPartidas.telaTempoPartida();
+                ScreenTorneios screenTorneios = new ScreenTorneios();
+                screenTorneios.telaTempoPartida();
             }
         });
 
@@ -107,8 +106,8 @@ public class ScreenPartidas extends JFrame {
         });
 
         }
-    public void telaCadastrarPartidas() {
-        JFrame frame = new JFrame("Cadastro de Partidas");
+    public void telaCadastrarTorneios() {
+        JFrame frame = new JFrame("Cadastro de Torneios");
         JTextField jogador1Field;
         JTextField jogador2Field;
         JTextField arbitroField;
@@ -117,9 +116,9 @@ public class ScreenPartidas extends JFrame {
         JTextField tempoPartidaField;
         JButton salvarButton;
         JButton voltarButton;
-        ControllerPartidas cadastrarPartida;
+        ControllerTorneios cadastrarTorneios;
 
-        cadastrarPartidas = new ControllerPartidas();
+        cadastrarTorneios = new ControllerTorneios();
 
         frame.setTitle("Cadastro de arbitro");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -184,7 +183,7 @@ public class ScreenPartidas extends JFrame {
     }
 
     public void telaAtualizarPartidas() {
-        JFrame frame = new JFrame("Atualizacao de Partidas");
+        JFrame frame = new JFrame("Atualizacao de Torneios");
         JTextField jogador1Field;
         JTextField jogador2Field;
         JTextField arbitroField;
@@ -259,112 +258,5 @@ public class ScreenPartidas extends JFrame {
         frame.setVisible(true);
     }
 
-    public void telaConsultarPartidas() {
-
-        JTextField idPartidaField;
-        JButton salvarButton;
-        JButton voltarButton;
-        ControllerPartidas consultarPartidas;
-
-        consultarPartidas = new ControllerPartidas();
-
-        setTitle("Consulta de Partidas");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(800, 400);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setLayout(new GridLayout(5, 2));
-
-        JPanel inputs = new JPanel(new GridLayout(3, 1));
-        inputs.add(new JLabel("ID Partida:", SwingConstants.CENTER));
-        idPartidaField = new JTextField();
-        inputs.add(idPartidaField);
-
-        add(inputs);
-
-        salvarButton = new JButton("Consultar");
-        salvarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                consultarArbitro.consultarArbitro(idPartidaField.getText());
-                idPartidaField.setText("");
-                
-            }
-        });
-        add(salvarButton);
-        setVisible(true);
-
-        voltarButton = new JButton("Voltar");
-        voltarButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-
-            }
-        });
-        add(voltarButton);
-        setVisible(true);
-
-    }
-
-    public void telaExcluirPartidas() {
-
-        JTextField idPartidaField;
-        JButton excluirButton;
-        JButton voltarButton;
-        ControllerArbitro excluirArbitro;
-        excluirArbitro = new ControllerArbitro();
-
-        setTitle("Excluir Partidas");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(800, 400);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setLayout(new GridLayout(3, 1));
-
-        JPanel inputs = new JPanel(new GridLayout(3, 3));
-        inputs.add(new JLabel("id arbitro:" , SwingConstants.CENTER));
-        idPartidaField = new JTextField();
-        inputs.add(idPartidaField);
-
-        add(inputs);
-
-        excluirButton = new JButton("Excluir");
-        excluirButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                excluirPartidas.excluirPartidas(idPartidaField.getText());
-                idPartidaField.setText("");
-                
-            }
-        });
-        add(excluirButton);
-        setVisible(true);
-
-        voltarButton = new JButton("Voltar");
-        voltarButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-
-            }
-        });
-        add(voltarButton);
-        setVisible(true);
-    }
-
-    public void telaVoltarAoMenu() {
-        JButton voltarApaginaInicialButton;
-        
-        setTitle("Menu Principal");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(800, 400);
-        setResizable(false);
-        setLocationRelativeTo(null);
-
-    }
-
-}
 
 
-
-
-        

@@ -1,57 +1,53 @@
 package Classes.Controller;
 import java.util.ArrayList;
 
-public class ControllerPartidas {
+public class ControllerTorneios {
     private ArrayList<Partida> partidas;
 
-    public ControllerPartidas() {
+    public ControllerTorneios() {
         partidas = new ArrayList<>();
     }
 
     
-    public void cadastrarPartida(String jogador1, String jogador2, String arbitro, String resultado, int idPartida, double tempoPartida) {
+    public void cadastrarTorneios(String jogador1, String jogador2, String arbitro, String resultado, int idPartida, double tempoPartida) {
         Partida novaPartida = new Partida(jogador1, jogador2, arbitro, resultado, idPartida, tempoPartida);
         partidas.add(novaPartida);
-        System.out.println("Partida cadastrada com sucesso!");
+        System.out.println("Torneio cadastrado com sucesso!");
     }
 
-    
-    public String consultarPartida(int idPartida) {
-        for (int i = 0; i < partidas.size(); i++) {
-            Partida partida = partidas.get(i);
-            if (partida.getId().equals(idPartida)) {
-                return "Partida encontrada: " + idPartida.toString();
+    public String consultarTorneios(int idPartida) {
+        for (int i = 0; i < torneios.size(); i++) {
+           Torneio torneios = Torneios.get(i);
+            if (torneios.getIdPartidas().equals(idPartida)) {
+                return "Partida encontrada: " + torneios.toString();
             }
         }
         return "Partida não encontrada.";
     }
 
-    
-    public void atualizarPartida(int idPartida, String novoResultado) {
-        for (int i = 0; i < partidas.size(); i++) {
-            Partida partida = partidas.get(i);
-            if (partida.getId().equals(idPartida)) {
-                partida.setResultado(novoResultado);
+    public void atualizarTorneios(int idTorneios, String novoResultado) {
+        for (int i = 0; i < Torneios.size(); i++) {
+            Torneios torneios = torneios.get(i);
+            if (torneios.getIdPartidas().equals(idPartida)) {
+                torneios.setResultado(novoResultado);
                 System.out.println("Resultado atualizado com sucesso!");
                 return;
             }
         }
-        System.out.println("Partida não encontrada.");
+        System.out.println("Torneios  não encontrada.");
     }
 
-    
-    public void excluirPartida(int idPartida) {
-        for (int i = 0; i < partidas.size(); i++) {
-            Partida partida = partidas.get(i);
-            if (partida.getId().equals(idPartida)) {
-                idpartidas.remove(i);
+    public void excluirTorneios(int idTorneios) {
+        for (int i = 0; i < torneios.size(); i++) {
+            Torneios torneios = torneios.get(i);
+            if (torneios.getId().equals(idTorneios)) {
+                torneios.remove(i);
                 System.out.println("Partida excluída com sucesso!");
                 return;
             }
         }
         System.out.println("Partida não encontrada.");
     }
-
 
     private static class Partida {
         private static int contador = 1;
@@ -62,7 +58,7 @@ public class ControllerPartidas {
         private int idPartida;
         private double tempoPartida;
 
-        public Partida(String jogador1, String jogador2, String arbitro, String resultado, int idPartida, double tempoPartida) {
+        public Torneios(String jogador1, String jogador2, String arbitro, String resultado, int idPartida, double tempoPartida) {
             this.idPartida = "P" + contador;
             contador++;
             this.jogador1 = jogador1;
@@ -88,11 +84,11 @@ public class ControllerPartidas {
         public String getResultado() {
             return resultado;
         }
-        public String getIdPartida() {
+        public int getIdPartidas() {
             return idPartida;
         }
 
-        public void setResultado(String resultado) {
+         public void setResultado(String resultado) {
             this.resultado = resultado;
         }
 

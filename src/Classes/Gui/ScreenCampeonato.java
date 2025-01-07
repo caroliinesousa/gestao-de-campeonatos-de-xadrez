@@ -37,7 +37,7 @@ public class ScreenCampeonato extends JFrame {
 
 
         JButton gerirPartidasButton = new JButton("Gerir Partidas");
-        JButton gerirTorneiosButton = new JButton("Gerir Campeonato");
+        JButton gerirTorneiosButton = new JButton("Gerir Torneios");
         JButton visualizarRankingButton = new JButton("Visualizar Ranking");
         JButton visualizarPremiacoesButton = new JButton("Visualizar Premiações");
         JButton voltarApaginaInicialButton = new JButton("Voltar a Página Inicial");
@@ -69,7 +69,7 @@ public class ScreenCampeonato extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ScreenCampeonato screenCampeonato = new ScreenCampeonato();
-                screenCampeonato.telaMenuCampeonato();
+                screenCampeonato.telaMenuTorneios();
             }
             
         });
