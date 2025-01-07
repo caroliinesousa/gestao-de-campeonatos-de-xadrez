@@ -11,8 +11,7 @@ import javax.swing.JButton;
 public class ControllerJogador {
     private String NOME_ARQUIVO = "informacoesJogadores.txt";
 
-    public void cadastrarJogador(String nome, String idade2, String genero, int ranking, int partidasJogadas) {
-        int idade = Integer.parseInt(idade2);
+    public void cadastrarJogador(String nome, int idade, String genero, int ranking, int partidasJogadas) {
         char sexo = genero.charAt(0);
         Jogador jogador = new Jogador(nome, idade, sexo, ranking, partidasJogadas, 0);
         try {
@@ -29,7 +28,7 @@ public class ControllerJogador {
         }
     }
 
-    public void atualizarJogador(String nome, String idade2, String genero, int ranking, int partidasJogadas) {
+    public void atualizarJogador(String nome, int idade, String genero, int ranking, int partidasJogadas) {
         try {
             File arquivo = new File(NOME_ARQUIVO);
             if (!arquivo.exists()) {
@@ -39,7 +38,6 @@ public class ControllerJogador {
 
             ArrayList<String> registros = new ArrayList<>();
             boolean encontrado = false;
-            int idade = Integer.parseInt(idade2);
             char sexo = genero.charAt(0);
 
             Scanner scanner = new Scanner(arquivo);

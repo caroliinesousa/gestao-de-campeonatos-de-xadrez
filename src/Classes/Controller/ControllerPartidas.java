@@ -19,8 +19,8 @@ public class ControllerPartidas {
     public String consultarPartida(int idPartida) {
         for (int i = 0; i < partidas.size(); i++) {
             Partida partida = partidas.get(i);
-            if (partida.getId().equals(idPartida)) {
-                return "Partida encontrada: " + idPartida.toString();
+            if (partida.getIdPartida().equals(idPartida)) {
+                return "Partida encontrada: " + idPartida;
             }
         }
         return "Partida não encontrada.";
@@ -30,7 +30,7 @@ public class ControllerPartidas {
     public void atualizarPartida(int idPartida, String novoResultado) {
         for (int i = 0; i < partidas.size(); i++) {
             Partida partida = partidas.get(i);
-            if (partida.getId().equals(idPartida)) {
+            if (partida.getIdPartida().equals(idPartida)) {
                 partida.setResultado(novoResultado);
                 System.out.println("Resultado atualizado com sucesso!");
                 return;

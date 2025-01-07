@@ -2,6 +2,9 @@ package Classes.Gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 import javax.swing.*;
 import Classes.Controller.ControllerJogador;
 
@@ -132,14 +135,72 @@ public class ScreenJogador extends JFrame {
                 BorderFactory.createEmptyBorder(5, 15, 5, 15)));
         salvarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                int rankingInt = Integer.parseInt(rankingField.getText());
-                int partidasInt = Integer.parseInt(partidasField.getText());
-                controller.cadastrarJogador(nomeField.getText(), idadeField.getText(), sexoField.getText(), rankingInt, partidasInt);
-                nomeField.setText("");
-                idadeField.setText("");
-                sexoField.setText("");
-                rankingField.setText("");
-                partidasField.setText("");
+                String nome = nomeField.getText();
+                String sexo = sexoField.getText();
+                
+                if (nomeField.getText().isEmpty() || idadeField.getText().isEmpty() || sexoField.getText().isEmpty() || rankingField.getText().isEmpty() || partidasField.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(frame, "Preencha todos os campos corretamente!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                }else{
+                    int idadeInt = Integer.parseInt(idadeField.getText());
+                    int rankingInt = Integer.parseInt(rankingField.getText());
+                    int partidasInt = Integer.parseInt(partidasField.getText());
+
+                    controller.cadastrarJogador(nome, idadeInt, sexo, rankingInt, partidasInt);
+                    nomeField.setText("");
+                    idadeField.setText("");
+                    sexoField.setText("");
+                    rankingField.setText("");
+                    partidasField.setText("");
+                    JOptionPane.showMessageDialog(frame, "Jogador cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
+
+        nomeField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+                    e.consume();
+                }
+            }
+        });
+
+        idadeField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                
+                if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE) {
+                    e.consume();
+                }
+            }
+        });
+
+        sexoField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+                    e.consume();
+                }
+            }
+        });
+
+        rankingField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                
+                if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE) {
+                    e.consume();
+                }
+            }
+        });
+
+        partidasField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                
+                if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE) {
+                    e.consume();
+                }
             }
         });
 
@@ -211,16 +272,30 @@ public class ScreenJogador extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nomeJogador = nomeField.getText();
-                boolean encontrado = consultarJogador.consultarJogador(nomeJogador, cadastrarButton);
-                if (encontrado) {
-                    statusLabel.setText("Jogador encontrado: " + nomeJogador);
-                    statusLabel.setForeground(Color.GREEN);
+                if (nomeField.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Digite um nome antes de consultar!", "Aviso", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(frame, "Jogador não encontrado. Você pode cadastrá-lo agora.", "Aviso", JOptionPane.WARNING_MESSAGE);
-                    statusLabel.setText("Jogador não encontrado.");
-                    statusLabel.setForeground(Color.RED);
+                    boolean encontrado = consultarJogador.consultarJogador(nomeJogador, cadastrarButton);
+                    if (encontrado) {
+                        statusLabel.setText("Jogador encontrado: " + nomeJogador);
+                        statusLabel.setForeground(Color.GREEN);
+                    } else {
+                        JOptionPane.showMessageDialog(frame, "Jogador não encontrado. Você pode cadastrá-lo agora.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                        statusLabel.setText("Jogador não encontrado.");
+                        statusLabel.setForeground(Color.RED);
+                    }
+                    nomeField.setText("");
+                    
                 }
-                nomeField.setText("");
+            }
+        });
+
+        nomeField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+                    e.consume();
+                }
             }
         });
     
@@ -309,14 +384,72 @@ public class ScreenJogador extends JFrame {
     ));
     atualizarButton.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            int rankingInt = Integer.parseInt(rankingField.getText());
-            int partidasInt = Integer.parseInt(partidasField.getText());
-            atualizarJogador.atualizarJogador(nomeField.getText(), idadeField.getText(), sexoField.getText(), rankingInt, partidasInt);
-            nomeField.setText("");
-            idadeField.setText("");
-            sexoField.setText("");
-            rankingField.setText("");
-            partidasField.setText("");
+            String nome = nomeField.getText();
+            String sexo = sexoField.getText();
+
+            if (nomeField.getText().isEmpty() || idadeField.getText().isEmpty() || sexoField.getText().isEmpty() || rankingField.getText().isEmpty() || partidasField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(frame, "Preencha todos os campos corretamente!", "Aviso", JOptionPane.WARNING_MESSAGE);
+            }else{
+                int idadeInt = Integer.parseInt(idadeField.getText());
+                int rankingInt = Integer.parseInt(rankingField.getText());
+                int partidasInt = Integer.parseInt(partidasField.getText());
+
+                atualizarJogador.atualizarJogador(nome, idadeInt, sexo, rankingInt, partidasInt);
+                nomeField.setText("");
+                idadeField.setText("");
+                sexoField.setText("");
+                rankingField.setText("");
+                partidasField.setText("");
+                JOptionPane.showMessageDialog(frame, "Jogador atualizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    });
+
+    nomeField.addKeyListener(new KeyAdapter() {
+        public void keyTyped(KeyEvent e) {
+            char c = e.getKeyChar();
+            if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+                e.consume();
+            }
+        }
+    });
+
+    idadeField.addKeyListener(new KeyAdapter() {
+        public void keyTyped(KeyEvent e) {
+            char c = e.getKeyChar();
+            
+            if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE) {
+                e.consume();
+            }
+        }
+    });
+
+    sexoField.addKeyListener(new KeyAdapter() {
+        public void keyTyped(KeyEvent e) {
+            char c = e.getKeyChar();
+            if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+                e.consume();
+            }
+        }
+    });
+
+    rankingField.addKeyListener(new KeyAdapter() {
+        public void keyTyped(KeyEvent e) {
+            char c = e.getKeyChar();
+            
+            if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE) {
+                e.consume();
+            }
+        }
+    });
+
+    partidasField.addKeyListener(new KeyAdapter() {
+        public void keyTyped(KeyEvent e) {
+            char c = e.getKeyChar();
+            
+            if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE) {
+                e.consume();
+            }
         }
     });
 
@@ -376,8 +509,22 @@ public class ScreenJogador extends JFrame {
     excluirButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            excluirJogador.excluirJogador(nomeField.getText());
-            nomeField.setText("");
+            if(nomeField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(frame, "Digite um nome para excluir!", "Aviso", JOptionPane.WARNING_MESSAGE);
+            }else{
+                excluirJogador.excluirJogador(nomeField.getText());
+                nomeField.setText("");
+                JOptionPane.showMessageDialog(frame, "Jogador excluído com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    });
+
+    nomeField.addKeyListener(new KeyAdapter() {
+        public void keyTyped(KeyEvent e) {
+            char c = e.getKeyChar();
+            if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+                e.consume();
+            }
         }
     });
 
