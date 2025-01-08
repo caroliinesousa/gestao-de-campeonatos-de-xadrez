@@ -32,7 +32,7 @@ public abstract class TorneioDuplas {
             pontos = equipe.getPontos();
         }
 
-        return "A euipe vencedora do torneio de duplas foi: " + vencedora;
+        return "A equipe vencedora do torneio de duplas foi: " + vencedora;
     }
 
     public void realizarTorneio() {

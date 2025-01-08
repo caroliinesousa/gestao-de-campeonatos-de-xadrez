@@ -1,9 +1,6 @@
 package Classes;
-
 import javax.swing.UIManager;
-
 import Classes.Gui.*;
-
 
 public class Main {
     public static void main(String[] args) {

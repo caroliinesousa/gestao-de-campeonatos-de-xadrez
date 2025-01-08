@@ -5,14 +5,13 @@ public class Jogador extends Pessoa {
     private int partidasJogadas;
     private int pontos;
 
-    //Jogador novo
     public Jogador(String nome, int idade, char genero) { 
         super(nome, idade, genero);
         this.ranking = 0;
         this.partidasJogadas = 0;
         this.pontos = 0;
     }
-    //Jogador antigo
+    
     public Jogador(String nome, int idade, char genero, int ranking, int partidasJogadas, int pontos) { 
         super(nome, idade, genero);
         this.ranking = ranking;

@@ -1,7 +1,5 @@
 package Classes.Partidas;
-
 import java.util.Scanner;
-
 import Classes.Pessoas.Arbitro;
 import Classes.Pessoas.Jogador;
 

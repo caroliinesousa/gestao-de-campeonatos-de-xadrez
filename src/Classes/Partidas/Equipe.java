@@ -1,5 +1,4 @@
 package Classes.Partidas;
-
 import Classes.Pessoas.Jogador;
 
 public class Equipe {
