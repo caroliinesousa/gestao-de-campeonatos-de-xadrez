@@ -15,7 +15,7 @@ public class ScreenMenu extends JFrame {
 
     public void telaPrincipal(){
         setTitle("Página Inicial");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);

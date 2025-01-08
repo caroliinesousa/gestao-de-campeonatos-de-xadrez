@@ -333,145 +333,165 @@ public class ScreenJogador extends JFrame {
     }    
 
     public void telaAtualizarJogador() {
-    JFrame frame = new JFrame("Atualizar Jogador");
-    JTextField nomeField;
-    JTextField idadeField;
-    JTextField sexoField;
-    JTextField rankingField;
-    JTextField partidasField;
-    JButton atualizarButton;
-    JButton voltarButton;
-    ControllerJogador atualizarJogador = new ControllerJogador();
+        JFrame frame = new JFrame("Atualizar Jogador");
+        JTextField nomeField, idadeField, sexoField, rankingField, partidasField;
+        JButton atualizarButton, voltarButton, cadastrarButton;
+        ControllerJogador atualizarJogador = new ControllerJogador();
+    
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(800, 400);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        frame.setLayout(new BorderLayout());
+    
+        JPanel inputs = new JPanel(new GridLayout(5, 2, 10, 10));
+        inputs.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+    
+        inputs.add(new JLabel("Nome Jogador:"));
+        nomeField = new JTextField();
+        inputs.add(nomeField);
+    
+        inputs.add(new JLabel("Idade Jogador:"));
+        idadeField = new JTextField();
+        inputs.add(idadeField);
+    
+        inputs.add(new JLabel("Gênero Jogador:"));
+        sexoField = new JTextField();
+        inputs.add(sexoField);
+    
+        inputs.add(new JLabel("Ranking Jogador:"));
+        rankingField = new JTextField();
+        inputs.add(rankingField);
+    
+        inputs.add(new JLabel("Partidas Jogador:"));
+        partidasField = new JTextField();
+        inputs.add(partidasField);
+    
+        frame.add(inputs, BorderLayout.CENTER);
 
-    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    frame.setSize(800, 400);
-    frame.setResizable(false);
-    frame.setLocationRelativeTo(null);
-    frame.setLayout(new BorderLayout());
-
-    JPanel inputs = new JPanel(new GridLayout(5, 2, 10, 10));
-    inputs.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-
-    inputs.add(new JLabel("Nome Jogador:"));
-    nomeField = new JTextField();
-    inputs.add(nomeField);
-
-    inputs.add(new JLabel("Idade Jogador:"));
-    idadeField = new JTextField();
-    inputs.add(idadeField);
-
-    inputs.add(new JLabel("Gênero Jogador:"));
-    sexoField = new JTextField();
-    inputs.add(sexoField);
-
-    inputs.add(new JLabel("Ranking Jogador:"));
-    rankingField = new JTextField();
-    inputs.add(rankingField);
-
-    inputs.add(new JLabel("Partidas Jogador:"));
-    partidasField = new JTextField();
-    inputs.add(partidasField);
-
-    frame.add(inputs, BorderLayout.CENTER);
-
-    JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
-
-    atualizarButton = new JButton("Atualizar");
-    atualizarButton.setPreferredSize(new Dimension(120, 40));
-    atualizarButton.setBorder(BorderFactory.createCompoundBorder(
-        BorderFactory.createLineBorder(Color.GRAY, 1),
-        BorderFactory.createEmptyBorder(5, 15, 5, 15)
-    ));
-    atualizarButton.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            String nome = nomeField.getText();
-            String sexo = sexoField.getText();
-
-            if (nomeField.getText().isEmpty() || idadeField.getText().isEmpty() || sexoField.getText().isEmpty() || rankingField.getText().isEmpty() || partidasField.getText().isEmpty()){
-                JOptionPane.showMessageDialog(frame, "Preencha todos os campos corretamente!", "Aviso", JOptionPane.WARNING_MESSAGE);
-            }else{
-                int idadeInt = Integer.parseInt(idadeField.getText());
-                int rankingInt = Integer.parseInt(rankingField.getText());
-                int partidasInt = Integer.parseInt(partidasField.getText());
-
-                atualizarJogador.atualizarJogador(nome, idadeInt, sexo, rankingInt, partidasInt);
-                nomeField.setText("");
-                idadeField.setText("");
-                sexoField.setText("");
-                rankingField.setText("");
-                partidasField.setText("");
-                JOptionPane.showMessageDialog(frame, "Jogador atualizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
+    
+        atualizarButton = new JButton("Atualizar");
+        atualizarButton.setPreferredSize(new Dimension(120, 40));
+        atualizarButton.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(Color.GRAY, 1),
+            BorderFactory.createEmptyBorder(5, 15, 5, 15)
+        ));
+    
+        cadastrarButton = new JButton("Cadastrar Jogador");
+        cadastrarButton.setPreferredSize(new Dimension(160, 40));
+        cadastrarButton.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(Color.GRAY, 1),
+            BorderFactory.createEmptyBorder(5, 15, 5, 15)
+        ));
+        cadastrarButton.setVisible(false);
+        cadastrarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                telaCadastrarJogador();
             }
-        }
-    });
-
-    nomeField.addKeyListener(new KeyAdapter() {
-        public void keyTyped(KeyEvent e) {
-            char c = e.getKeyChar();
-            if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
-                e.consume();
+        });
+    
+        atualizarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nome = nomeField.getText();
+                String sexo = sexoField.getText();
+    
+                if (nomeField.getText().isEmpty() || idadeField.getText().isEmpty() || sexoField.getText().isEmpty() || rankingField.getText().isEmpty() || partidasField.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Preencha todos os campos corretamente!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    int idadeInt = Integer.parseInt(idadeField.getText());
+                    int rankingInt = Integer.parseInt(rankingField.getText());
+                    int partidasInt = Integer.parseInt(partidasField.getText());
+    
+                    boolean jogadorAtualizado = atualizarJogador.atualizarJogador(nome, idadeInt, sexo, rankingInt, partidasInt);
+    
+                    if (jogadorAtualizado) {
+                        JOptionPane.showMessageDialog(frame, "Jogador atualizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                        nomeField.setText("");
+                        idadeField.setText("");
+                        sexoField.setText("");
+                        rankingField.setText("");
+                        partidasField.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(frame, "Jogador não encontrado! Cadastre abaixo!", "Erro", JOptionPane.ERROR_MESSAGE);
+                        cadastrarButton.setVisible(true); 
+                    }
+                }
             }
-        }
-    });
+        });
 
-    idadeField.addKeyListener(new KeyAdapter() {
-        public void keyTyped(KeyEvent e) {
-            char c = e.getKeyChar();
-            
-            if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE) {
-                e.consume();
+        nomeField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+                    e.consume();
+                }
             }
-        }
-    });
+        });
 
-    sexoField.addKeyListener(new KeyAdapter() {
-        public void keyTyped(KeyEvent e) {
-            char c = e.getKeyChar();
-            if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
-                e.consume();
+        idadeField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                
+                if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE) {
+                    e.consume();
+                }
             }
-        }
-    });
+        });
 
-    rankingField.addKeyListener(new KeyAdapter() {
-        public void keyTyped(KeyEvent e) {
-            char c = e.getKeyChar();
-            
-            if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE) {
-                e.consume();
+        sexoField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+                    e.consume();
+                }
             }
-        }
-    });
+        });
 
-    partidasField.addKeyListener(new KeyAdapter() {
-        public void keyTyped(KeyEvent e) {
-            char c = e.getKeyChar();
-            
-            if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE) {
-                e.consume();
+        rankingField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                
+                if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE) {
+                    e.consume();
+                }
             }
-        }
-    });
+        });
 
-    voltarButton = new JButton("Voltar");
-    voltarButton.setPreferredSize(new Dimension(120, 40));
-    voltarButton.setBorder(BorderFactory.createCompoundBorder(
-        BorderFactory.createLineBorder(Color.GRAY, 1),
-        BorderFactory.createEmptyBorder(5, 15, 5, 15)
-    ));
-    voltarButton.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            frame.dispose();
-        }
-    });
-
-    buttonPanel.add(atualizarButton);
-    buttonPanel.add(voltarButton);
-
-    frame.add(buttonPanel, BorderLayout.SOUTH);
-    frame.setVisible(true);
-}
-
+        partidasField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                
+                if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE) {
+                    e.consume();
+                }
+            }
+        });
+    
+        voltarButton = new JButton("Voltar");
+        voltarButton.setPreferredSize(new Dimension(120, 40));
+        voltarButton.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(Color.GRAY, 1),
+            BorderFactory.createEmptyBorder(5, 15, 5, 15)
+        ));
+        voltarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+            }
+        });
+    
+        buttonPanel.add(atualizarButton);
+        buttonPanel.add(cadastrarButton);
+        buttonPanel.add(voltarButton);
+    
+        frame.add(buttonPanel, BorderLayout.SOUTH);
+        frame.setVisible(true);
+    }
+    
     public void telaExcluirJogador() {
     JFrame frame = new JFrame("Excluir Jogador");
     JTextField nomeField;
@@ -509,12 +529,19 @@ public class ScreenJogador extends JFrame {
     excluirButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(nomeField.getText().isEmpty()){
+
+            String nomeJogador = nomeField.getText();
+
+            if (nomeJogador.isEmpty()) {
                 JOptionPane.showMessageDialog(frame, "Digite um nome para excluir!", "Aviso", JOptionPane.WARNING_MESSAGE);
-            }else{
-                excluirJogador.excluirJogador(nomeField.getText());
-                nomeField.setText("");
-                JOptionPane.showMessageDialog(frame, "Jogador excluído com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                boolean jogadorExcluido = excluirJogador.excluirJogador(nomeJogador);
+                if (jogadorExcluido) {
+                    JOptionPane.showMessageDialog(frame, "Jogador excluído com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                    nomeField.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Jogador não encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
     });

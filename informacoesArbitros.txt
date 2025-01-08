@@ -1,2 +1,0 @@
-Nome: Amanda, Idade: 25, Gênero: F, Certificações: IELTS
-Nome: Junior, Idade: 29, Gênero: M, certificacoes: FIFA

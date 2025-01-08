@@ -2,6 +2,9 @@ package Classes.Gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 import javax.swing.*;
 import Classes.Controller.ControllerArbitro;
 
@@ -104,7 +107,6 @@ public class ScreenArbitro extends JFrame {
         frame.setLocationRelativeTo(null);
         frame.setLayout(new BorderLayout());
     
-        // Painel de inputs centralizado
         JPanel inputs = new JPanel(new GridLayout(4, 2, 10, 10));
         inputs.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
     
@@ -126,7 +128,6 @@ public class ScreenArbitro extends JFrame {
     
         frame.add(inputs, BorderLayout.CENTER);
     
-        // Painel de botões
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
     
         salvarButton = new JButton("Salvar");
@@ -138,16 +139,65 @@ public class ScreenArbitro extends JFrame {
         salvarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cadastrarArbitro.cadastrarArbitro(
-                    nomeField.getText(),
-                    idadeField.getText(),
-                    sexoField.getText(),
-                    certificacoesField.getText()
+                if (nomeField.getText().isEmpty() || idadeField.getText().isEmpty() || sexoField.getText().isEmpty() || certificacoesField.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(frame, "Preencha todos os campos corretamente!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                }else{
+                    try {
+                        int idade = Integer.parseInt(idadeField.getText()); // Converte idade para int
+                
+                        cadastrarArbitro.cadastrarArbitro(
+                        nomeField.getText(),
+                        idade,
+                        sexoField.getText(),
+                        certificacoesField.getText()
                 );
                 nomeField.setText("");
                 idadeField.setText("");
                 sexoField.setText("");
                 certificacoesField.setText("");
+
+                JOptionPane.showMessageDialog(frame, "Árbitro cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(frame, "Idade inválida! Digite um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+            }
+        }
+        });
+
+        nomeField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+                    e.consume();
+                }
+            }
+        });
+
+        idadeField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                
+                if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE) {
+                    e.consume();
+                }
+            }
+        });
+
+        sexoField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+                    e.consume();
+                }
+            }
+        });
+
+        certificacoesField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+                    e.consume();
+                }
             }
         });
     
@@ -221,7 +271,10 @@ public class ScreenArbitro extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nomeArbitro = nomeField.getText();
-                boolean encontrado = consultarArbitro.consultarArbitro(nomeArbitro, cadastrarButton);
+                if (nomeField.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Digite um nome antes de consultar!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                }else{ 
+                    boolean encontrado = consultarArbitro.consultarArbitro(nomeArbitro, cadastrarButton);
                 if (encontrado) {
                     statusLabel.setText("Arbitro encontrado: " + nomeArbitro);
                     statusLabel.setForeground(Color.GREEN);
@@ -231,6 +284,16 @@ public class ScreenArbitro extends JFrame {
                     statusLabel.setForeground(Color.RED);
                 }
                 nomeField.setText("");
+            }
+        }
+        });
+
+        nomeField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+                    e.consume();
+                }
             }
         });
     
@@ -268,15 +331,16 @@ public class ScreenArbitro extends JFrame {
     }    
 
     public void telaAtualizarArbitro() {
+        JFrame frame = new JFrame ("Atualizar Árbitro");
         JTextField nomeField;
         JTextField idadeField;
         JTextField sexoField;
         JTextField certificacoesField;
-        JButton salvarButton;
+        JButton atualizarButton;
+        JButton cadastrarButton;
         JButton voltarButton;
         ControllerArbitro atualizarArbitro = new ControllerArbitro();
     
-        setTitle("Atualizar Árbitro");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
@@ -306,25 +370,91 @@ public class ScreenArbitro extends JFrame {
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
     
-        salvarButton = new JButton("Atualizar");
-        salvarButton.setPreferredSize(new Dimension(120, 40));
-        salvarButton.setBorder(BorderFactory.createCompoundBorder(
+        atualizarButton = new JButton("Atualizar");
+        atualizarButton.setPreferredSize(new Dimension(120, 40));
+        atualizarButton.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createLineBorder(Color.GRAY, 1),
             BorderFactory.createEmptyBorder(5, 15, 5, 15)
         ));
-        salvarButton.addActionListener(new ActionListener() {
+
+        cadastrarButton = new JButton("Cadastrar Árbitro");
+        cadastrarButton.setPreferredSize(new Dimension(160, 40));
+        cadastrarButton.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(Color.GRAY, 1),
+            BorderFactory.createEmptyBorder(5, 15, 5, 15)
+        ));
+        cadastrarButton.setVisible(false);
+        cadastrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                atualizarArbitro.atualizarArbitro(
-                    nomeField.getText(),
-                    idadeField.getText(),
-                    sexoField.getText(),
-                    certificacoesField.getText()
-                );
-                nomeField.setText("");
-                idadeField.setText("");
-                sexoField.setText("");
-                certificacoesField.setText("");
+                frame.dispose();
+                telaCadastrarArbitro();
+            }
+        });
+
+        atualizarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nome = nomeField.getText();
+                String sexo = sexoField.getText();
+                String certificacoes = certificacoesField.getText();
+    
+                if (nomeField.getText().isEmpty() || idadeField.getText().isEmpty() || sexoField.getText().isEmpty() || certificacoesField.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Preencha todos os campos corretamente!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    int idadeInt = Integer.parseInt(idadeField.getText());
+    
+                    boolean jogadorAtualizado = atualizarArbitro.atualizarArbitro(nome, idadeInt, sexo, certificacoes);
+    
+                    if (jogadorAtualizado) {
+                        JOptionPane.showMessageDialog(frame, "Árbitro atualizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                        nomeField.setText("");
+                        idadeField.setText("");
+                        sexoField.setText("");
+                        certificacoesField.setText("");
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(frame, "Árbitro não encontrado! Cadastre abaixo!", "Erro", JOptionPane.ERROR_MESSAGE);
+                        cadastrarButton.setVisible(true); 
+                    }
+                }
+            }
+        });
+
+        nomeField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+                    e.consume();
+                }
+            }
+        });
+
+        idadeField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                
+                if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE) {
+                    e.consume();
+                }
+            }
+        });
+
+        sexoField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+                    e.consume();
+                }
+            }
+        });
+
+        certificacoesField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+                    e.consume();
+                }
             }
         });
     
@@ -341,14 +471,14 @@ public class ScreenArbitro extends JFrame {
             }
         });
     
-        buttonPanel.add(salvarButton);
+        buttonPanel.add(atualizarButton);
+        buttonPanel.add(cadastrarButton);
         buttonPanel.add(voltarButton);
     
         add(buttonPanel, BorderLayout.SOUTH);
         setVisible(true);
     }
     
-
     public void telaExcluirArbitro() {
         JFrame frame = new JFrame("Excluir Árbitro");
         JTextField nomeField;
@@ -385,9 +515,32 @@ public class ScreenArbitro extends JFrame {
         ));
         excluirButton.addActionListener(new ActionListener() {
             @Override
+
             public void actionPerformed(ActionEvent e) {
-                excluirArbitro.excluirArbitro(nomeField.getText());
-                nomeField.setText("");
+
+            String nomeArbitro = nomeField.getText();
+
+            if (nomeArbitro.isEmpty()) {
+                JOptionPane.showMessageDialog(frame, "Digite um nome para excluir!", "Aviso", JOptionPane.WARNING_MESSAGE);
+            } else {
+                boolean arbitroExcluido = excluirArbitro.excluirArbitro(nomeArbitro);
+
+                if (arbitroExcluido) {
+                    JOptionPane.showMessageDialog(frame, "Árbitro excluído com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                    nomeField.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Árbitro não encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            }
+        });
+
+        nomeField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+                    e.consume();
+                }
             }
         });
     

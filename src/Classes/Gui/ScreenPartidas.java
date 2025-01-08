@@ -351,18 +351,10 @@ public class ScreenPartidas extends JFrame {
         setVisible(true);
     }
 
-    public void telaVoltarAoMenu() {
-        JButton voltarApaginaInicialButton;
-        
-        setTitle("Menu Principal");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(800, 400);
-        setResizable(false);
-        setLocationRelativeTo(null);
 
     }
 
-}
+
 
 
 
