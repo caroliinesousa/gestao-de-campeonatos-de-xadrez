@@ -1,22 +1,22 @@
 package Classes.Controller;
 import java.util.ArrayList;
 
-public class ControllerPartidas {
-    private ArrayList<Partida> partidas;
+public class ControllerPartidasSingulares {
+    private ArrayList<PartidaSingulares> partidasSingulares;
 
-    public ControllerPartidas() {
-        partidas = new ArrayList<>();
+    public ControllerPartidasSingulares() {
+        partidasSingulares = new ArrayList<>();
     }
 
     
-    public void cadastrarPartida(String jogador1, String jogador2, String arbitro, String resultado, int idPartida, double tempoPartida) {
-        Partida novaPartida = new Partida(jogador1, jogador2, arbitro, resultado, idPartida, tempoPartida);
+    public void cadastrarPartidasSingulares(String jogador1, String jogador2, String arbitro, String resultado, int idPartida, double tempo) {
+        Partida novaPartida = new Partida(jogador1, jogador2, arbitro, resultado, idPartida, tempo);
         partidas.add(novaPartida);
         System.out.println("Partida cadastrada com sucesso!");
     }
 
     
-    public String consultarPartida(int idPartida) {
+    public String consultarPartidasSingulares(int idPartida) {
         for (int i = 0; i < partidas.size(); i++) {
             Partida partida = partidas.get(i);
             if (partida.getIdPartida().equals(idPartida)) {
@@ -27,7 +27,7 @@ public class ControllerPartidas {
     }
 
     
-    public void atualizarPartida(int idPartida, String novoResultado) {
+    public void atualizarPartidasSingulares(int idPartida, String novoResultado) {
         for (int i = 0; i < partidas.size(); i++) {
             Partida partida = partidas.get(i);
             if (partida.getIdPartida().equals(idPartida)) {
@@ -40,7 +40,7 @@ public class ControllerPartidas {
     }
 
     
-    public void excluirPartida(int idPartida) {
+    public void excluirPartidasSingulares(int idPartida) {
         for (int i = 0; i < partidas.size(); i++) {
             Partida partida = partidas.get(i);
             if (partida.getId().equals(idPartida)) {
@@ -53,23 +53,23 @@ public class ControllerPartidas {
     }
 
 
-    private static class Partida {
+    private static class PartidasSingulares {
         private static int contador = 1;
         private String jogador1;
         private String jogador2;
         private String arbitro;
         private String resultado;
         private int idPartida;
-        private double tempoPartida;
+        private double tempo;
 
-        public Partida(String jogador1, String jogador2, String arbitro, String resultado, int idPartida, double tempoPartida) {
+        public PartidasSingulares(String jogador1, String jogador2, String arbitro, String resultado, int idPartida, double tempo) {
             this.idPartida = "P" + contador;
             contador++;
             this.jogador1 = jogador1;
             this.jogador2 = jogador2;
             this.arbitro = arbitro;
             this.resultado = resultado;
-            this.tempoPartida = tempoPartida;
+            this.tempo = tempo;
         }
 
 
@@ -96,13 +96,13 @@ public class ControllerPartidas {
             this.resultado = resultado;
         }
 
-        public String getTempoPartida() {
-            return tempoPartida;
+        public String gettempo() {
+            return tempo;
         }
 
         @Override
         public String toString() {
-            return  ", Jogador 1: " + jogador1 + ", Jogador 2: " + jogador2 + ", Arbitro: " + arbitro + ", Resultado: " + resultado + "ID Partida: " + idPartida + ", Tempo partida: " tempoPartida;
+            return  ", Jogador 1 Equipe 1: " + jogador1Equipe1 + ", Jogador 2 Equipe 1: " + jogador2Equipe1 + ", Jogador 1 Equipe 2: " + jogador1Equipe2 + ", Jogador 2 Equipe 2: " + jogador2Equipe2 + ", Arbitro: " + arbitro + ", Resultado: " + resultado + "ID Partida: " + idPartida + ", Tempo partida: " tempo;
         }
     }
 }
