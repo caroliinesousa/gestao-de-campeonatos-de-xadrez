@@ -3,16 +3,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import Classes.Controller.ControllerPartidas;
+import Classes.Controller.ControllerPartidasSingulares;
 
-public class ScreenPartidas extends JFrame {
+public class ScreenPartidasSingulares extends JFrame {
 
-    public ScreenPartidas() {
+    public ScreenPartidasSingulares() {
 
     }
-    public void telaMenuPartidas(){
+    public void telaMenuPartidasSingulares(){
 
-        setTitle("Gestão de Partidas");
+        setTitle("Gestão de Partidas Singulares");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
@@ -22,7 +22,7 @@ public class ScreenPartidas extends JFrame {
 
         JPanel panel = new JPanel(new GridLayout(7, 1));
         panel.setBorder(BorderFactory.createEmptyBorder(40,100,40,100));
-        JLabel fraseLabel = new JLabel("Gestão de Partidas", SwingConstants.CENTER);
+        JLabel fraseLabel = new JLabel("Gestão de Partidas Singulares", SwingConstants.CENTER);
         fraseLabel.setFont(new Font("Arial", Font.BOLD, 28));
         JLabel fraseLabel2 = new JLabel("Gerencie os Partidas com facilidade. Preencha as lacunas abaixo!", SwingConstants.CENTER);
         fraseLabel2.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -32,7 +32,7 @@ public class ScreenPartidas extends JFrame {
         JButton arbitroButton = new JButton("Árbitro");
         JButton resultadoButton = new JButton("Resultado Partida");
         JButton idPartidaButton = new JButton("ID Partida");
-        JButton tempoPartidaButton = new JButton("Tempo da Partida");
+        JButton tempoButton = new JButton("Tempo da Partida");
         JButton voltarApaginaInicialButton = new JButton("Voltar a Página Inicial");
 
 
@@ -43,7 +43,7 @@ public class ScreenPartidas extends JFrame {
         panel.add(arbitroButton);
         panel.add(resultadoButton);
         panel.add(idPartidaButton);
-        panel.add(tempoPartidaButton);
+        panel.add(tempoButton);
         panel.add(voltarApaginaInicialButton);
 
         add(panel);
@@ -52,48 +52,48 @@ public class ScreenPartidas extends JFrame {
         jogador1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScreenPartidas screenPartidas = new ScreenPartidas();
-                screenPartidas.telaJogador1();
+                ScreenPartidasSingulares screenPartidasSingulares = new ScreenPartidasSingulares();
+                screenPartidasSingulares.telaJogador1();
             }
         });
 
         jogador2Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScreenPartidas screenPartidas = new ScreenPartidas();
-                screenPartidas.telaJogador2();
+                ScreenPartidasSingulares screenPartidasSingulares = new ScreenPartidasSingulares();
+                screenPartidasSingulares.telaJogador2();
             }
         });
 
         arbitroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScreenPartidas screenPartidas = new ScreenPartidas();
-                screenPartidas.telaArbitro();
+                ScreenPartidasSingulares screenPartidasSingulares = new ScreenPartidasSingulares();
+                screenPartidasSingulares.telaArbitro();
             }
         });
 
         resultadoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScreenPartidas screenPartidas = new ScreenPartidas();
-                screenPartidas.telaResultado();
+                ScreenPartidasSingulares screenPartidasSingulares = new ScreenPartidasSingulares();
+                screenPartidasSingulares.telaResultado();
             }
         });
 
         idPartidaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScreenPartidas screenPartidas = new ScreenPartidas();
-                screenPartidas.telaidPartida();
+                ScreenPartidasSingulares screenPartidasSingulares = new ScreenPartidasSingulares();
+                screenPartidasSingulares.telaidPartida();
             }
         });
 
-        tempoPartidaButton.addActionListener(new ActionListener() {
+        tempoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScreenPartidas screenPartidas = new ScreenPartidas();
-                screenPartidas.telaTempoPartida();
+                ScreenPartidasSingulares screenPartidasSingulares = new ScreenPartidasSingulares();
+                screenPartidasSingulares.telaTempo();
             }
         });
 
@@ -107,19 +107,19 @@ public class ScreenPartidas extends JFrame {
         });
 
         }
-    public void telaCadastrarPartidas() {
+    public void telaCadastrarPartidasSingulares() {
         JFrame frame = new JFrame("Cadastro de Partidas");
         JTextField jogador1Field;
         JTextField jogador2Field;
         JTextField arbitroField;
         JTextField resultadoField;
         JTextField idPartidaField;
-        JTextField tempoPartidaField;
+        JTextField tempoField;
         JButton salvarButton;
         JButton voltarButton;
-        ControllerPartidas cadastrarPartida;
+        ControllerPartidasSingulares cadastrarPartidasSingulares;
 
-        cadastrarPartidas = new ControllerPartidas();
+        cadastrarPartidasSingulares = new ControllerPartidasSingulares();
 
         frame.setTitle("Cadastro de arbitro");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -150,8 +150,8 @@ public class ScreenPartidas extends JFrame {
         inputs.add(idPartidaField);
 
         inputs.add(new JLabel("Tempo Partida:"));
-        tempoPartidaField = new JTextField();
-        inputs.add(tempoPartidaField);
+        tempoField = new JTextField();
+        inputs.add(tempoField);
 
         frame.add(inputs);
 
@@ -159,13 +159,13 @@ public class ScreenPartidas extends JFrame {
         salvarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cadastrarPartidas.cadastrarPartidas(jogador1Field.getText(), jogador2Field.getText(), arbitroField.getText(), resultadoField.getText(), idPartidaField.getText(), tempoPartidaField.getText());
+                cadastrarPartidasSingulares.cadastrarPartidasSingulares(jogador1Field.getText(), jogador2Field.getText(), arbitroField.getText(), resultadoField.getText(), idPartidaField.getText(), tempoField.getText());
                 jogador1Field.setText("");
                 jogador2Field.setText("");
                 arbitroField.setText("");
                 resultadoField.setText("");
                 idPartidaField.setText("");
-                tempoPartidaField.setText("");
+                tempoField.setText("");
             }
             });
         frame.add(salvarButton);
@@ -183,19 +183,19 @@ public class ScreenPartidas extends JFrame {
         frame.setVisible(true);
     }
 
-    public void telaAtualizarPartidas() {
+    public void telaAtualizarPartidasSingulares() {
         JFrame frame = new JFrame("Atualizacao de Partidas");
         JTextField jogador1Field;
         JTextField jogador2Field;
         JTextField arbitroField;
         JTextField resultadoField;
         JTextField idPartidaField;
-        JTextField tempoPartidaField;
+        JTextField tempoField;
         JButton salvarButton;
         JButton voltarButton;
-        ControllerPartidas cadastrarPartida;
+        ControllerPartidasSingulares atualizarPartidasSingulares;
 
-        atualizarPartidas = new ControllerPartidas();
+        atualizarPartidasSingulares = new ControllerPartidasSingulares();
 
         frame.setTitle("Atualizar Partida");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -226,8 +226,8 @@ public class ScreenPartidas extends JFrame {
         inputs.add(idPartidaField);
 
         inputs.add(new JLabel("Tempo Partida:"));
-        tempoPartidaField = new JTextField();
-        inputs.add(tempoPartidaField);
+        tempoField = new JTextField();
+        inputs.add(tempoField);
 
         frame.add(inputs);
 
@@ -235,13 +235,13 @@ public class ScreenPartidas extends JFrame {
         salvarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cadastrarPartidas.cadastrarPartidas(jogador1Field.getText(), jogador2Field.getText(), arbitroField.getText(), idPartidaField.getText(), resultadoField.getText(), tempoPartidaField.getText());
+                cadastrarPartidasSingulares.cadastrarPartidasSingulares(jogador1Field.getText(), jogador2Field.getText(), arbitroField.getText(), idPartidaField.getText(), resultadoField.getText(), tempoField.getText());
                 jogador1Field.setText("");
                 jogador2Field.setText("");
                 arbitroField.setText("");
                 resultadoField.setText("");
                 idPartidaField.setText("");
-                tempoPartidaField.setText("");
+                tempoField.setText("");
             }
             });
         frame.add(salvarButton);
@@ -251,7 +251,7 @@ public class ScreenPartidas extends JFrame {
         voltarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();  
-                telaMenuPartidas();
+                telaMenuPartidasSingulares();
 
             }
         });
@@ -259,14 +259,14 @@ public class ScreenPartidas extends JFrame {
         frame.setVisible(true);
     }
 
-    public void telaConsultarPartidas() {
+    public void telaConsultarPartidasSingulares() {
 
         JTextField idPartidaField;
         JButton salvarButton;
         JButton voltarButton;
-        ControllerPartidas consultarPartidas;
+        ControllerPartidasSingulares consultarPartidasSingulares;
 
-        consultarPartidas = new ControllerPartidas();
+        consultarPartidasSingulares = new ControllerPartidasSingulares();
 
         setTitle("Consulta de Partidas");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -306,7 +306,7 @@ public class ScreenPartidas extends JFrame {
 
     }
 
-    public void telaExcluirPartidas() {
+    public void telaExcluirPartidasSingulares() {
 
         JTextField idPartidaField;
         JButton excluirButton;
@@ -332,7 +332,7 @@ public class ScreenPartidas extends JFrame {
         excluirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                excluirPartidas.excluirPartidas(idPartidaField.getText());
+                excluirPartidasSingulares.excluirPartidasSingulares(idPartidaField.getText());
                 idPartidaField.setText("");
                 
             }
