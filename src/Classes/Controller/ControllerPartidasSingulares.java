@@ -1,8 +1,10 @@
 package Classes.Controller;
 import java.util.ArrayList;
 
+import Classes.Partidas.PartidaSingulares;
+
 public class ControllerPartidasSingulares {
-    private ArrayList<PartidaSingulares> partidasSingulares;
+    private ArrayList<PartidasSingulares> partidasSingulares;
 
     public ControllerPartidasSingulares() {
         partidasSingulares = new ArrayList<>();
@@ -10,16 +12,16 @@ public class ControllerPartidasSingulares {
 
     
     public void cadastrarPartidasSingulares(String jogador1, String jogador2, String arbitro, String resultado, int idPartida, double tempo) {
-        Partida novaPartida = new Partida(jogador1, jogador2, arbitro, resultado, idPartida, tempo);
-        partidas.add(novaPartida);
+        PartidasSingulares novasPartidaSingulares = new PartidasSingulares(jogador1, jogador2, arbitro, resultado, idPartida, tempo);
+        partidasSingulares.add();
         System.out.println("Partida cadastrada com sucesso!");
     }
 
     
     public String consultarPartidasSingulares(int idPartida) {
-        for (int i = 0; i < partidas.size(); i++) {
-            Partida partida = partidas.get(i);
-            if (partida.getIdPartida().equals(idPartida)) {
+        for (int i = 0; i < partidasSingulares.size(); i++) {
+            PartidasSingulares partidasSingulares = partidasSingulares.get(idPartida);
+            if (partidasSingulares.getIdPartida().equals(idPartida)) {
                 return "Partida encontrada: " + idPartida;
             }
         }
@@ -28,10 +30,10 @@ public class ControllerPartidasSingulares {
 
     
     public void atualizarPartidasSingulares(int idPartida, String novoResultado) {
-        for (int i = 0; i < partidas.size(); i++) {
-            Partida partida = partidas.get(i);
-            if (partida.getIdPartida().equals(idPartida)) {
-                partida.setResultado(novoResultado);
+        for (int i = 0; i < partidasSingulares.size(); i++) {
+            PartidasSingulares partidaSingulares = partidasSingulares.get(i);
+            if (partidasSingulares.getIdPartidasSingulares().equals(idPartida)) {
+                partidasSingulares.setResultado(novoResultado);
                 System.out.println("Resultado atualizado com sucesso!");
                 return;
             }
@@ -41,10 +43,10 @@ public class ControllerPartidasSingulares {
 
     
     public void excluirPartidasSingulares(int idPartida) {
-        for (int i = 0; i < partidas.size(); i++) {
-            Partida partida = partidas.get(i);
-            if (partida.getId().equals(idPartida)) {
-                idpartidas.remove(i);
+        for (int i = 0; i < partidasSingulares.size(); i++) {
+            PartidasSingulares partidasSingulares = partidasSingulares.get(i);
+            if (partidasSingulares.getId().equals(idPartida)) {
+                idPartida.remove(i);
                 System.out.println("Partida excluída com sucesso!");
                 return;
             }
@@ -63,7 +65,7 @@ public class ControllerPartidasSingulares {
         private double tempo;
 
         public PartidasSingulares(String jogador1, String jogador2, String arbitro, String resultado, int idPartida, double tempo) {
-            this.idPartida = "P" + contador;
+            this.idPartida = contador;
             contador++;
             this.jogador1 = jogador1;
             this.jogador2 = jogador2;
@@ -88,7 +90,7 @@ public class ControllerPartidasSingulares {
         public String getResultado() {
             return resultado;
         }
-        public String getIdPartida() {
+        public int getIdPartida() {
             return idPartida;
         }
 
@@ -96,13 +98,13 @@ public class ControllerPartidasSingulares {
             this.resultado = resultado;
         }
 
-        public String gettempo() {
+        public double gettempo() {
             return tempo;
         }
 
         @Override
         public String toString() {
-            return  ", Jogador 1 Equipe 1: " + jogador1Equipe1 + ", Jogador 2 Equipe 1: " + jogador2Equipe1 + ", Jogador 1 Equipe 2: " + jogador1Equipe2 + ", Jogador 2 Equipe 2: " + jogador2Equipe2 + ", Arbitro: " + arbitro + ", Resultado: " + resultado + "ID Partida: " + idPartida + ", Tempo partida: " tempo;
+            return  ", Jogador 1 Equipe 1: " + jogador1 + ", Jogador 2 Equipe 1: " + jogador2 + ", Jogador 1 Equipe 2: " + jogador1 + ", Jogador 2 Equipe 2: " + jogador2 + ", Arbitro: " + arbitro + ", Resultado: " + resultado + "ID Partida: " + idPartida + ", Tempo partida: " + tempo;
         }
     }
 }
