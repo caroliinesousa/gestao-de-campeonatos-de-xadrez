@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import Classes.Controller.ControllerTorneios;
 
 public class ScreenTorneios extends JFrame {
 
@@ -192,7 +191,7 @@ public class ScreenTorneios extends JFrame {
         JTextField tempoPartidaField;
         JButton salvarButton;
         JButton voltarButton;
-        ControllerPartidas atualizarPartidas;
+        ControllerPartidas cadastrarPartida;
 
         atualizarPartidas = new ControllerPartidas();
 
@@ -257,7 +256,6 @@ public class ScreenTorneios extends JFrame {
         frame.add(voltarButton);
         frame.setVisible(true);
     }
-}
 
 
 

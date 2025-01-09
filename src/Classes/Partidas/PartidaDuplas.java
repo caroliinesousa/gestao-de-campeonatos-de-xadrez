@@ -1,12 +1,10 @@
 package Classes.Partidas;
-
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import Classes.Pessoas.Arbitro;
 import Classes.Pessoas.Jogador;
 
-public class PartidaDuplas implements ControloPartida {
+public class PartidaDuplas implements ControlePartida {
     private Jogador jogador1Equipe1;
     private Jogador jogador2Equipe1;
     private Jogador jogador1Equipe2;
