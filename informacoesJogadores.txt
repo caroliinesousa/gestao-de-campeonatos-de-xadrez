@@ -1,5 +1,6 @@
 Nome: Vitor, Idade: 26, Gênero: M, Ranking: 3, Partidas jogadas: 10
 Nome: Edna, Idade: 24, Gênero: F, Ranking: 5, Partidas jogadas: 9
 Nome: Antonio, Idade: 30, Gênero: M, Ranking: 10, Partidas jogadas: 1
-Nome: Rita, Idade: 30, Gênero: F, Ranking: 9, Partidas jogadas: 3
+Nome: Rita, Idade: 46, Gênero: F, Ranking: 0, Partidas jogadas: 0
 Nome: Guilherme, Idade: 22, Gênero: M, Ranking: 6, Partidas jogadas: 5
+Nome: Kany, Idade: 22, Gênero: F, Ranking: 8, Partidas jogadas: 2
