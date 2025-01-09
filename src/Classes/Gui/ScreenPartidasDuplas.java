@@ -12,7 +12,7 @@ public class ScreenPartidasDuplas extends JFrame {
     }
     public static void telaMenuPartidasDuplas(){
 
-         setTitle("Gestão de Partidas Duplas");
+        setTitle("Gestão de Partidas Duplas");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
