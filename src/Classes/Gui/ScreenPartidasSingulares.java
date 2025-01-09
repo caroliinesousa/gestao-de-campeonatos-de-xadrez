@@ -175,7 +175,7 @@ public class ScreenPartidasSingulares extends JFrame {
         voltarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();  
-                telaMenuPartidas();
+                telaMenuPartidasSingulares();
 
             }
         });

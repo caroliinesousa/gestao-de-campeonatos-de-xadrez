@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import Classes.Controller.ControllerPartidas;
 
 public class ScreenTorneios extends JFrame {
 
