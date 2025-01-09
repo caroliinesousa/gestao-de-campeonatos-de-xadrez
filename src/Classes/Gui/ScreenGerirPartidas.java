@@ -1,4 +1,5 @@
 package Classes.Gui;
+
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -13,60 +14,63 @@ import javax.swing.SwingConstants;
 
 public class ScreenGerirPartidas extends JFrame {
 
-
-    public void telaMenuPartidas(){
-
+    public void telaGerirPartidas() {
         setTitle("Gestão de Partidas");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(6, 1));
-        setLayout(new BorderLayout(75,75));
+        setLayout(new BorderLayout(10, 10)); // Espaçamento entre os componentes
 
-        JPanel panel = new JPanel(new GridLayout(7, 1));
-        panel.setBorder(BorderFactory.createEmptyBorder(40,100,40,100));
+        // Painel para o título e subtítulo
+        JPanel titlePanel = new JPanel(new GridLayout(2, 1));
         JLabel fraseLabel = new JLabel("Gestão de Partidas", SwingConstants.CENTER);
         fraseLabel.setFont(new Font("Arial", Font.BOLD, 28));
         JLabel fraseLabel2 = new JLabel("Gerencie os Partidas com facilidade!", SwingConstants.CENTER);
-        fraseLabel2.setFont(new Font("Arial", Font.PLAIN, 12));
+        fraseLabel2.setFont(new Font("Arial", Font.PLAIN, 14));
+        titlePanel.add(fraseLabel);
+        titlePanel.add(fraseLabel2);
+
+        // Painel para os botões
+        JPanel buttonPanel = new JPanel(new GridLayout(3, 1, 10, 10)); // 3 linhas, 10px de espaço vertical
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));
 
         JButton PartidasSingularesButton = new JButton("Partidas Singulares");
         JButton PartidasDuplasButton = new JButton("Partidas Duplas");
         JButton voltarApaginaInicialButton = new JButton("Voltar a Página Inicial");
 
-        panel.add(PartidasSingularesButton);
-        panel.add(PartidasDuplasButton);
-        panel.add(voltarApaginaInicialButton);
+        buttonPanel.add(PartidasSingularesButton);
+        buttonPanel.add(PartidasDuplasButton);
+        buttonPanel.add(voltarApaginaInicialButton);
 
-        add(panel);
+        // Adiciona os painéis ao JFrame
+        add(titlePanel, BorderLayout.NORTH);
+        add(buttonPanel, BorderLayout.CENTER);
+
         setVisible(true);
 
-        gerirPartidasSingularesButton.addActionListener(new ActionListener() {
-
+        // Ações dos botões
+        PartidasSingularesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScreenGerirPartidasSingulares screenGerirPartidasSingulares = new ScreenGerirPartidasSingulares();
-                ScreenGerirPartidasSingulares.telaMenuGerirPartidasSingulares();
+                ScreenPartidasSingulares screenPartidasSingulares = new ScreenPartidasSingulares();
+                screenPartidasSingulares.telaMenuPartidasSingulares();
             }
-            
         });
 
-        gerirPartidasDuplasButton.addActionListener(new ActionListener() {
-
+        PartidasDuplasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScreenGerirPartidasDuplas screenGerirPartidasDuplas = new ScreenGerirPartidasDuplas();
-                ScreenGerirPartidasDuplas.telaMenuGerirPartidasDuplas();
+                ScreenPartidasDuplas screenPartidasDuplas = new ScreenPartidasDuplas();
+                screenPartidasDuplas.telaMenuPartidasDuplas();
             }
-            
         });
 
-         voltarApaginaInicialButton.addActionListener(new ActionListener() {
-
+        voltarApaginaInicialButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+                dispose(); // Fecha a janela atual
             }
-            
         });
+    }
+}

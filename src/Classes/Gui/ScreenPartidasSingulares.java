@@ -10,7 +10,7 @@ public class ScreenPartidasSingulares extends JFrame {
     public ScreenPartidasSingulares() {
 
     }
-    public void telaMenuPartidasSingulares(){
+    public static void telaMenuPartidasSingulares(){
 
         setTitle("Gestão de Partidas Singulares");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
