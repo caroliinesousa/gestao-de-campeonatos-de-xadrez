@@ -130,12 +130,12 @@ public class ScreenCampeonato extends JFrame {
 
     frame.add(titlePanel, BorderLayout.NORTH);
 
-    JPanel buttonPanel = new JPanel(new GridLayout(4, 1, 10, 10));
+    JPanel buttonPanel = new JPanel(new GridLayout(4, 1));
     buttonPanel.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));
 
     JButton partidasSingularesButton = new JButton("Gerir Partidas Singulares");
     JButton partidasDuplasButton = new JButton("Gerir Partidas Duplas");
-    JButton voltarButton = new JButton("Voltar ao Menu Principal");
+    JButton voltarButton = new JButton("Voltar");
 
     partidasSingularesButton.addActionListener(new ActionListener() {
         @Override
@@ -157,7 +157,6 @@ public class ScreenCampeonato extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             frame.dispose();
-            telaMenuPrincipal(); 
         }
     });
 
