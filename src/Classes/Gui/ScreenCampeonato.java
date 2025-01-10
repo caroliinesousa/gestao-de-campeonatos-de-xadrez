@@ -1,5 +1,8 @@
 package Classes.Gui;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -9,6 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import Classes.Controller.ControllerArbitro;
@@ -103,7 +108,7 @@ public class ScreenCampeonato extends JFrame {
         });
 }
 
-public void telaGerirPartida() {
+    public void telaGerirPartida() {
     JFrame frame = new JFrame("Gerir Partidas");
     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     frame.setSize(800, 400);
@@ -136,7 +141,7 @@ public void telaGerirPartida() {
         @Override
         public void actionPerformed(ActionEvent e) {
             frame.dispose();
-            telaPartidasSingulares(); // Método a ser implementado
+            telaPartidasSingulares(); 
         }
     });
 
@@ -144,7 +149,7 @@ public void telaGerirPartida() {
         @Override
         public void actionPerformed(ActionEvent e) {
             frame.dispose();
-            telaPartidasDuplas(); // Método a ser implementado
+            telaPartidasDuplas(); 
         }
     });
 
@@ -152,7 +157,7 @@ public void telaGerirPartida() {
         @Override
         public void actionPerformed(ActionEvent e) {
             frame.dispose();
-            telaMenuPrincipal(); // Método a ser implementado
+            telaMenuPrincipal(); 
         }
     });
 
@@ -165,7 +170,7 @@ public void telaGerirPartida() {
     frame.setVisible(true);
 }
 
-public void telaGerirTorneios() {
+    public void telaGerirTorneios() { 
     // Configurações básicas da janela
     JFrame frame = new JFrame("Gerir Torneios");
     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -217,4 +222,67 @@ public void telaGerirTorneios() {
     // Exibe a janela
     frame.setVisible(true);
 }
+    
+    public void telaVisualizarPremiacoes() {
+    JFrame frame = new JFrame("Visualizar Premiações");
+    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    frame.setSize(800, 400);
+    frame.setResizable(false);
+    frame.setLocationRelativeTo(null);
+
+    JPanel mainPanel = new JPanel(new BorderLayout());
+    mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+    JPanel titlePanel = new JPanel(new GridLayout(2, 1, 10, 10));
+    JLabel titleLabel = new JLabel("Premiações", SwingConstants.CENTER);
+    titleLabel.setFont(new Font("Arial", Font.BOLD, 28));
+    
+    JLabel subTitleLabel = new JLabel("Confira os prêmios disponíveis para os vencedores!", SwingConstants.CENTER);
+    subTitleLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+
+    titlePanel.add(titleLabel);
+    titlePanel.add(subTitleLabel);
+    mainPanel.add(titlePanel, BorderLayout.NORTH);
+
+    String[] columnNames = {"Tipo de Partida", "Premiação"};
+    String[][] data = {
+        {"Partidas Singulares", "30.000 EUR / Viagem / Carro"},
+        {"Partidas Duplas", "40.000 EUR por dupla / Viagem / Carro"}
+    };
+
+    JTable table = new JTable(data, columnNames);
+    table.setFont(new Font("Arial", Font.PLAIN, 16));
+    table.setRowHeight(35);
+    table.setEnabled(false); // Desativa edição da tabela
+    table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 18));
+    table.getTableHeader().setBackground(new Color(220, 220, 220));
+    table.getTableHeader().setForeground(Color.BLACK);
+
+    JScrollPane scrollPane = new JScrollPane(table);
+    scrollPane.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+    mainPanel.add(scrollPane, BorderLayout.CENTER);
+
+    JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 10));
+
+    JButton voltarButton = new JButton("Voltar");
+    voltarButton.setPreferredSize(new Dimension(120, 40));
+    voltarButton.setBorder(BorderFactory.createCompoundBorder(
+        BorderFactory.createLineBorder(Color.GRAY, 1),
+        BorderFactory.createEmptyBorder(5, 15, 5, 15)
+    ));
+    voltarButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+        }
+    });
+
+    buttonPanel.add(voltarButton);
+    mainPanel.add(buttonPanel, BorderLayout.SOUTH);
+
+    frame.add(mainPanel);
+    frame.setVisible(true);
+}
+
+
 }
