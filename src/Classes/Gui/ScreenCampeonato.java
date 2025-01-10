@@ -7,6 +7,10 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,14 +20,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import Classes.Campeonato;
 import Classes.Controller.ControllerArbitro;
 import Classes.Controller.ControllerCampeonato;
+import Classes.Controller.ControllerRanking;
 
 public class ScreenCampeonato extends JFrame {
 
     public void telaMenuCampeonato(){
         setTitle("Gestão de Campeonatos");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -72,20 +78,20 @@ public class ScreenCampeonato extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ScreenCampeonato screenCampeonato = new ScreenCampeonato();
-                screenCampeonato.telaMenuTorneios();
+                screenCampeonato.telaGerirTorneios();
             }
             
         });
 
         visualizarRankingButton.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 ScreenCampeonato screenCampeonato = new ScreenCampeonato();
                 screenCampeonato.telaVisualizarRanking();
             }
-            
         });
+        
+
 
         visualizarPremiacoesButton.addActionListener(new ActionListener() {
 
@@ -109,18 +115,18 @@ public class ScreenCampeonato extends JFrame {
 }
 
     public void telaGerirPartida() {
-    JFrame frame = new JFrame("Gerir Partidas");
-    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    JFrame frame = new JFrame("Gestão de Partidas");
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(800, 400);
     frame.setResizable(false);
     frame.setLocationRelativeTo(null);
     frame.setLayout(new BorderLayout());
 
     JPanel titlePanel = new JPanel(new GridLayout(2, 1, 5, 5));
-    titlePanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 10, 20));
+    titlePanel.setBorder(BorderFactory.createEmptyBorder(30, 20, 10, 20));
 
-    JLabel tituloLabel = new JLabel("Gerenciar Partidas", SwingConstants.CENTER);
-    tituloLabel.setFont(new Font("Arial", Font.BOLD, 20));
+    JLabel tituloLabel = new JLabel("Gestão de Partidas", SwingConstants.CENTER);
+    tituloLabel.setFont(new Font("Arial", Font.BOLD, 28));
 
     JLabel fraseLabel2 = new JLabel("Gerencie partidas com facilidade. Escolha uma das opções para começar!", SwingConstants.CENTER);
     fraseLabel2.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -169,62 +175,67 @@ public class ScreenCampeonato extends JFrame {
     frame.setVisible(true);
 }
 
-    public void telaGerirTorneios() { 
-    // Configurações básicas da janela
+    public void telaGerirTorneios(){
     JFrame frame = new JFrame("Gerir Torneios");
-    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    frame.setSize(800, 400);
-    frame.setResizable(false);
-    frame.setLocationRelativeTo(null);
-    frame.setLayout(new BorderLayout());
+    setTitle("Gestão de Campeonatos");
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setSize(800, 400);
+    setResizable(false);
+    setLocationRelativeTo(null);
+    setLayout(new GridLayout(6, 1));
+    setLayout(new BorderLayout(75,75));
 
-    // Painel superior para o título e subtítulo
-    JPanel titlePanel = new JPanel(new GridLayout(2, 1, 5, 5));
-    titlePanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 10, 20));
-
+    JPanel buttonPanel = new JPanel(new GridLayout(6, 1));
+    buttonPanel.setBorder(BorderFactory.createEmptyBorder(40,100,40,100));
+    
     JLabel fraseLabel = new JLabel("Gestão de Torneios", SwingConstants.CENTER);
     fraseLabel.setFont(new Font("Arial", Font.BOLD, 28));
-
-    JLabel fraseLabel2 = new JLabel("Gerencie torneios com facilidade. Selecione uma opção para começar!", SwingConstants.CENTER);
+    JLabel fraseLabel2 = new JLabel("Gerencie torneios com facilidade. Escolha uma das opções para começar!", SwingConstants.CENTER);
     fraseLabel2.setFont(new Font("Arial", Font.PLAIN, 12));
+    JLabel fraseLabel3 = new JLabel("Selecione uma opção para começar a gestão!", SwingConstants.CENTER);
+    fraseLabel3.setFont(new Font("Arial", Font.PLAIN, 12));
 
-    titlePanel.add(fraseLabel);
-    titlePanel.add(fraseLabel2);
-    frame.add(titlePanel, BorderLayout.NORTH);
-
-    // Painel de botões
-    JPanel buttonPanel = new JPanel(new GridLayout(3, 1, 10, 10));
-    buttonPanel.setBorder(BorderFactory.createEmptyBorder(40, 100, 40, 100));
-
-    // Botões
-    JButton torneiosSingularesButton = new JButton("Gerir Torneios Singulares por Pontos");
+    JButton torneiosSingularesButton = new JButton("Gerir Torneios Singulares por pontos");
     JButton torneiosDuplasButton = new JButton("Gerir Torneios Duplas");
-    JButton voltarApaginaInicialButton = new JButton("Voltar à Página Inicial");
+    JButton voltarButton = new JButton("Voltar");
 
-    // Adiciona os botões ao painel
-    buttonPanel.add(torneiosSingularesButton);
-    buttonPanel.add(torneiosDuplasButton);
-    buttonPanel.add(voltarApaginaInicialButton);
-
-    // Adiciona o painel de botões ao centro da tela
-    frame.add(buttonPanel, BorderLayout.CENTER);
-
-    // Ação do botão de voltar
-    voltarApaginaInicialButton.addActionListener(new ActionListener() {
+    torneiosSingularesButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             frame.dispose();
-            telaMenuPrincipal(); // Método a ser implementado
+            telaTorneiosSingulares(); 
         }
     });
 
-    // Exibe a janela
-    frame.setVisible(true);
+    torneiosDuplasButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            telaTorneiosDuplas(); 
+        }
+    });
+
+    voltarButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            dispose();
+    
+        }
+    });
+
+    buttonPanel.add(fraseLabel);
+    buttonPanel.add(fraseLabel2);
+    buttonPanel.add(torneiosSingularesButton);
+    buttonPanel.add(torneiosDuplasButton);
+    buttonPanel.add(voltarButton);
+
+    add(buttonPanel);
+    setVisible(true);
 }
     
     public void telaVisualizarPremiacoes() {
     JFrame frame = new JFrame("Visualizar Premiações");
-    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(800, 400);
     frame.setResizable(false);
     frame.setLocationRelativeTo(null);
@@ -283,5 +294,55 @@ public class ScreenCampeonato extends JFrame {
     frame.setVisible(true);
 }
 
+    public void telaVisualizarRanking() {
+    JFrame frame = new JFrame("Visualizar Rankings");
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(800, 400);
+    frame.setResizable(false);
+    frame.setLocationRelativeTo(null);
+    frame.setLayout(new BorderLayout(10, 20));
 
+    JLabel tituloLabel = new JLabel("Ranking Atual dos Jogadores", SwingConstants.CENTER);
+    tituloLabel.setFont(new Font("Arial", Font.BOLD, 24));
+    frame.add(tituloLabel, BorderLayout.NORTH);
+
+    JPanel centerPanel = new JPanel(new BorderLayout());
+    centerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+    ControllerRanking controllerRanking = new ControllerRanking();
+    String[][] dados = controllerRanking.lerDadosDoArquivo("ranking.txt");
+
+    String[] colunas = {"Ranking", "Nome", "Pontos"};
+
+    JTable tabela = new JTable(dados, colunas);
+    tabela.setFillsViewportHeight(true);
+    tabela.setEnabled(false);
+    tabela.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
+    tabela.setFont(new Font("Arial", Font.PLAIN, 12));
+    tabela.setRowHeight(25);
+
+    JScrollPane scrollPane = new JScrollPane(tabela);
+    centerPanel.add(scrollPane, BorderLayout.CENTER);
+
+    frame.add(centerPanel, BorderLayout.CENTER);
+
+    JButton voltarButton = new JButton("Voltar");
+    voltarButton.setPreferredSize(new Dimension(120, 40));
+    voltarButton.setBorder(BorderFactory.createCompoundBorder(
+        BorderFactory.createLineBorder(Color.GRAY, 1),
+        BorderFactory.createEmptyBorder(5, 15, 5, 15)
+    ));
+    voltarButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+        }
+    });
+
+    JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+    buttonPanel.add(voltarButton);
+    frame.add(buttonPanel, BorderLayout.SOUTH);
+
+    frame.setVisible(true);
+}
 }

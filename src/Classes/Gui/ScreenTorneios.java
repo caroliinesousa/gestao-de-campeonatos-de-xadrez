@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+import Classes.Controller.ControllerTorneios;
+
 public class ScreenTorneios extends JFrame {
 
     publicTorneios() {
@@ -12,7 +14,7 @@ public class ScreenTorneios extends JFrame {
     public void telaMenuTorneios(){
 
         setTitle("Gestão de Torneios ");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);

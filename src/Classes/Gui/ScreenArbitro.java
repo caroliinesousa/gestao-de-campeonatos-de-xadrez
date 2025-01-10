@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
 import javax.swing.*;
 import Classes.Controller.ControllerArbitro;
 
@@ -16,7 +15,7 @@ public class ScreenArbitro extends JFrame {
     public void telaMenuArbitro(){
 
         setTitle("Gestão de Árbitros");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -101,7 +100,7 @@ public class ScreenArbitro extends JFrame {
         JButton voltarButton;
         ControllerArbitro cadastrarArbitro = new ControllerArbitro();
     
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 400);  
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
@@ -232,7 +231,7 @@ public class ScreenArbitro extends JFrame {
     
         ControllerArbitro consultarArbitro = new ControllerArbitro();
     
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 400);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
@@ -341,7 +340,7 @@ public class ScreenArbitro extends JFrame {
         JButton voltarButton;
         ControllerArbitro atualizarArbitro = new ControllerArbitro();
     
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -486,7 +485,7 @@ public class ScreenArbitro extends JFrame {
         JButton voltarButton;
         ControllerArbitro excluirArbitro = new ControllerArbitro();
     
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 250);  
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);

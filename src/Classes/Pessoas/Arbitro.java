@@ -8,6 +8,10 @@ public class Arbitro extends Pessoa {
         this.certificacoes = certificacoes;
     }
     
+    public Arbitro(String arbitroNome) {
+        //TODO Auto-generated constructor stub
+    }
+
     public String getCertificacoes() {
         return this.certificacoes;
     }

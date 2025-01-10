@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+
+import Classes.Controller.ControllerArbitro;
 import Classes.Controller.ControllerPartidasDuplas;
 
 public class ScreenPartidasDuplas extends JFrame {
@@ -13,7 +15,7 @@ public class ScreenPartidasDuplas extends JFrame {
     public static void telaMenuPartidasDuplas(){
 
         setTitle("Gestão de Partidas Duplas");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);

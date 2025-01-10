@@ -14,7 +14,7 @@ public class ScreenPartidasSingulares extends JFrame {
     }
     public void telaMenuPartidasSingulares() {
         setTitle("Gestão de Partidas");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);

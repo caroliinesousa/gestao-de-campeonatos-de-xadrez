@@ -13,7 +13,7 @@ public class ScreenJogador extends JFrame {
     }
     public void telaMenuJogador() {
         setTitle("Gestão de Jogadores");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 400);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -94,7 +94,7 @@ public class ScreenJogador extends JFrame {
         JButton voltarButton;
         ControllerJogador controller = new ControllerJogador();
 
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 400);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
@@ -232,7 +232,7 @@ public class ScreenJogador extends JFrame {
     
         ControllerJogador consultarJogador = new ControllerJogador();
     
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 400);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
@@ -337,7 +337,7 @@ public class ScreenJogador extends JFrame {
         JButton atualizarButton, voltarButton, cadastrarButton;
         ControllerJogador atualizarJogador = new ControllerJogador();
     
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 400);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
@@ -498,7 +498,7 @@ public class ScreenJogador extends JFrame {
     JButton voltarButton;
     ControllerJogador excluirJogador = new ControllerJogador();
 
-    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(600, 250);  
     frame.setResizable(false);
     frame.setLocationRelativeTo(null);
