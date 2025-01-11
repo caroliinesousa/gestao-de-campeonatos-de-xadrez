@@ -19,8 +19,8 @@ public class ControllerGerirPartidasSingulares {
     }
 
     // Retorna a lista de partidas formatada
-    public List<String> listarPartidas() {
-        List<String> lista = new ArrayList<>();
+    public ArrayList<String> listarPartidas() {
+        ArrayList<String> lista = new ArrayList<>();
         for (PartidaSingular partida : partidas) {
             lista.add(partida.toString());
         }

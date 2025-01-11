@@ -12,7 +12,7 @@ public class ControllerPartidasDuplas {
 
      public void cadastrarPartidasDuplas(String jogador1Equipe1, String jogador1Equipe2, String jogador2Equipe1, String jogador2Equipe2, String arbitro, String resultado, int idPartida, double tempo) {
         PartidasDuplas novaPartida = new PartidasDuplas(jogador1Equipe1, jogador2Equipe1, jogador1Equipe2, jogador2Equipe2, arbitro, resultado, idPartida, tempo);
-        PartidasDuplas.add(novaPartida);
+        PartidasDuplas.add(partidasDuplas);
         System.out.println("Partida cadastrada com sucesso!");
     }
 
@@ -109,7 +109,7 @@ public class ControllerPartidasDuplas {
             return tempo;
         }
 
-        Override
+        @Override
         public String toString() {
             return  ", Jogador 1 Equipe 1: " + jogador1Equipe1 + ", Jogador 2 Equipe 1: " + jogador2Equipe1 +  ", jogador 1 Equipe 2  " + jogador1Equipe2 + " jogador 2 Equipe 2 " + jogador2Equipe2 + " arbitro: " + arbitro + " Resultado: " + resultado  + "  IDPartida:  " + idPartida + ", Tempo partida: " + tempo;
         }
