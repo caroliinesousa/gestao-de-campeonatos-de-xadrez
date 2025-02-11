@@ -1,0 +1,6 @@
+Nome: Jos�, Idade: 23, G�nero: M, certificacoes: FIDE
+Nome: Luan, Idade: 21, G�nero: M, certificacoes: FIDE
+Nome: Lorence, Idade: 25, G�nero: M, certificacoes: FIDE
+Nome: Antonieta, Idade: 25, G�nero: F, certificacoes: FIDE
+Nome: Elieser, Idade: 23, G�nero: M, certificacoes: FIDE
+Nome: Zezinho, Idade: 26, G�nero: M, certificacoes: FIDE

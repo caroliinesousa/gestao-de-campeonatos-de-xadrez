@@ -1,0 +1,9 @@
+Gui,3
+Rita,6
+Antonio,9
+Bruno,12
+Edna,15
+Ana,18
+Vitor,21
+Helder,0
+Luiza,0

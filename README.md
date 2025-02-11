@@ -22,6 +22,7 @@ Além disso, o sistema é flexível, suportando diferentes tipos de torneios, co
 3. **Suporte a diferentes formatos de torneios**: Individual e em duplas.  
 4. **Acompanhamento do desempenho**: Monitore a performance de cada jogador durante o torneio.  
 5. **Resultados consolidados**: Visualize rankings e estatísticas de forma clara e objetiva.  
+6. **Acompanhamento**: Visualize 
 
 ---
 
@@ -29,7 +30,6 @@ Além disso, o sistema é flexível, suportando diferentes tipos de torneios, co
 
 1. **Java**: Linguagem principal do sistema.  
 2. **Paradigma POO**: Implementação dos principais pilares da orientação a objetos.  
-3. **Banco de dados (opcional, se implementado)**: Para armazenamento de dados persistentes.  
 
 ---
 
@@ -39,7 +39,7 @@ Além disso, o sistema é flexível, suportando diferentes tipos de torneios, co
 
 Certifique-se de ter as seguintes ferramentas instaladas no seu ambiente:
 
-1. **Java JDK 11** ou superior  
+1. **Java JDK 21** ou superior  
 2. IDE de sua preferência (Eclipse, IntelliJ IDEA, NetBeans etc.)  
 
 ### 2. Configuração do Projeto

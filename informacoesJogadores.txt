@@ -1,0 +1,11 @@
+Nome: Gui, Idade: 22, G�nero: M, Ranking: 7, Partidas jogadas: 1
+Nome: Rita, Idade: 46, G�nero: F, Ranking: 6, Partidas jogadas: 2
+Nome: Antonio, Idade: 46, G�nero: M, Ranking: 5, Partidas jogadas: 3
+Nome: Bruno, Idade: 28, G�nero: M, Ranking: 4, Partidas jogadas: 4
+Nome: Edna, Idade: 24, G�nero: F, Ranking: 3, Partidas jogadas: 5
+Nome: Ana, Idade: 26, G�nero: F, Ranking: 2, Partidas jogadas: 6
+Nome: Vitor, Idade: 26, G�nero: M, Ranking: 1, Partidas jogadas: 7
+Nome: Helder, Idade: 42, G�nero: M, Ranking: 0, Partidas jogadas: 0
+Nome: Luiza, Idade: 22, G�nero: F, Ranking: 0, Partidas jogadas: 0
+Nome: Lucas, Idade: 25, G�nero: M, Ranking: 123, Partidas jogadas: 12
+Nome: Abc, Idade: 17, G�nero: F, Ranking: 0, Partidas jogadas: 0
