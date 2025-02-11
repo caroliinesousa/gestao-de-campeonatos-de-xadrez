@@ -1,5 +1,6 @@
 package Classes.Gui;
 
+import Classes.Controller.ControllerPartidasSingulares;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -11,8 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-
-import Classes.Controller.ControllerPartidasSingulares;
 
 /**
  * A classe {@code ScreenMenu} representa a tela principal do sistema "Xeque &
