@@ -22,7 +22,7 @@ Além disso, o sistema é flexível, suportando diferentes tipos de torneios, co
 3. **Suporte a diferentes formatos de torneios**: Individual e em duplas.  
 4. **Acompanhamento do desempenho**: Monitore a performance de cada jogador durante o torneio.  
 5. **Resultados consolidados**: Visualize rankings e estatísticas de forma clara e objetiva.  
-6. **Acompanhamento**: Visualize 
+6. **Acompanhamento**: Visualize as premiações.
 
 ---
 
